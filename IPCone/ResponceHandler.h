@@ -1,0 +1,12 @@
+//
+// Created by Guri on 13/07/2018.
+//
+
+#ifndef SERVER_RESPONCEHANDLER_H
+#define SERVER_RESPONCEHANDLER_H
+
+
+
+
+
+#endif //SERVER_RESPONCEHANDLER_H
