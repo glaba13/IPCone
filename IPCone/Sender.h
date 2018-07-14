@@ -6,10 +6,29 @@
 #define SERVER_SENDER_H
 
 using namespace std;
+
 #include <ntdef.h>
 #include <string>
 #include "Buffer.h"
 
+/**
+ * Send Data Function into pipe
+ * @param hPipe
+ * @param buff
+ * @param msg  for the debug use only
+ * @return
+ */
 bool sendData(HANDLE hPipe, Buffer buff, string msg);
-bool sendData(HANDLE hPipe, Buffer buff, string msg, OVERLAPPED * ov);
+
+
+/**
+ * Send Data Function into pipe
+ * @param hPipe
+ * @param buff
+ * @param msg
+ * @param ov    Use when Asynchronous
+ * @return
+ */
+bool sendData(HANDLE hPipe, Buffer buff, string msg, OVERLAPPED *ov);
+
 #endif //SERVER_SENDER_H

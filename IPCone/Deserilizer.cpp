@@ -3,23 +3,34 @@
 //
 
 #include "Deserilizer.h"
-#include "Buffer.h"
-#include "protocol.h"
-#include "Examples/Movie.h"
 
-
+/**
+ * Int Deserilizer
+ * @param value
+ * @param buffer
+ */
 void deserilizeInt(int &value, char *buffer) {
-    value =  int((unsigned char)(buffer[0]) << 24 |
-                 (unsigned char)(buffer[1]) << 16 |
-                 (unsigned char)(buffer[2]) << 8 |
-                 (unsigned char)(buffer[3]));
+    value = int((unsigned char) (buffer[0]) << 24 |
+                (unsigned char) (buffer[1]) << 16 |
+                (unsigned char) (buffer[2]) << 8 |
+                (unsigned char) (buffer[3]));
 }
 
-string deserilizeStr( char * buffer){
-   return string(buffer);
+/**
+ * String Deserilizer
+ * @param buffer
+ * @return
+ */
+string deserilizeStr(char *buffer) {
+    return string(buffer);
 }
 
-void deserilizeMovie(Movie *m, char * buffer){
+/**
+ * Movie Deserilizer
+ * @param m
+ * @param buffer
+ */
+void deserilizeMovie(Movie *m, char *buffer) {
     string str(buffer);
     int rating;
     deserilizeInt(rating, buffer + str.length() + 1);
@@ -27,10 +38,13 @@ void deserilizeMovie(Movie *m, char * buffer){
     m->rating = rating;
 }
 
-
-
+/**
+ * Short Deserilizer
+ * @param value
+ * @param buffer
+ */
 void deserilizeShort(short &value, char *buffer) {
-    value =  short((unsigned char)(buffer[0]) << 8 |
-                 (unsigned char)(buffer[1]));
+    value = short((unsigned char) (buffer[0]) << 8 |
+                  (unsigned char) (buffer[1]));
 }
 

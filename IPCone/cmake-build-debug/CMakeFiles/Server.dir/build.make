@@ -176,57 +176,9 @@ CMakeFiles/Server.dir/Sender.cpp.obj.provides: CMakeFiles/Server.dir/Sender.cpp.
 CMakeFiles/Server.dir/Sender.cpp.obj.provides.build: CMakeFiles/Server.dir/Sender.cpp.obj
 
 
-CMakeFiles/Server.dir/Message.cpp.obj: CMakeFiles/Server.dir/flags.make
-CMakeFiles/Server.dir/Message.cpp.obj: ../Message.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\first\IPCone\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Server.dir/Message.cpp.obj"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Server.dir\Message.cpp.obj -c E:\first\IPCone\Message.cpp
-
-CMakeFiles/Server.dir/Message.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Server.dir/Message.cpp.i"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\first\IPCone\Message.cpp > CMakeFiles\Server.dir\Message.cpp.i
-
-CMakeFiles/Server.dir/Message.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Server.dir/Message.cpp.s"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\first\IPCone\Message.cpp -o CMakeFiles\Server.dir\Message.cpp.s
-
-CMakeFiles/Server.dir/Message.cpp.obj.requires:
-
-.PHONY : CMakeFiles/Server.dir/Message.cpp.obj.requires
-
-CMakeFiles/Server.dir/Message.cpp.obj.provides: CMakeFiles/Server.dir/Message.cpp.obj.requires
-	$(MAKE) -f CMakeFiles\Server.dir\build.make CMakeFiles/Server.dir/Message.cpp.obj.provides.build
-.PHONY : CMakeFiles/Server.dir/Message.cpp.obj.provides
-
-CMakeFiles/Server.dir/Message.cpp.obj.provides.build: CMakeFiles/Server.dir/Message.cpp.obj
-
-
-CMakeFiles/Server.dir/Buffer.cpp.obj: CMakeFiles/Server.dir/flags.make
-CMakeFiles/Server.dir/Buffer.cpp.obj: ../Buffer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\first\IPCone\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Server.dir/Buffer.cpp.obj"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Server.dir\Buffer.cpp.obj -c E:\first\IPCone\Buffer.cpp
-
-CMakeFiles/Server.dir/Buffer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Server.dir/Buffer.cpp.i"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\first\IPCone\Buffer.cpp > CMakeFiles\Server.dir\Buffer.cpp.i
-
-CMakeFiles/Server.dir/Buffer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Server.dir/Buffer.cpp.s"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\first\IPCone\Buffer.cpp -o CMakeFiles\Server.dir\Buffer.cpp.s
-
-CMakeFiles/Server.dir/Buffer.cpp.obj.requires:
-
-.PHONY : CMakeFiles/Server.dir/Buffer.cpp.obj.requires
-
-CMakeFiles/Server.dir/Buffer.cpp.obj.provides: CMakeFiles/Server.dir/Buffer.cpp.obj.requires
-	$(MAKE) -f CMakeFiles\Server.dir\build.make CMakeFiles/Server.dir/Buffer.cpp.obj.provides.build
-.PHONY : CMakeFiles/Server.dir/Buffer.cpp.obj.provides
-
-CMakeFiles/Server.dir/Buffer.cpp.obj.provides.build: CMakeFiles/Server.dir/Buffer.cpp.obj
-
-
 CMakeFiles/Server.dir/Deserilizer.cpp.obj: CMakeFiles/Server.dir/flags.make
 CMakeFiles/Server.dir/Deserilizer.cpp.obj: ../Deserilizer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\first\IPCone\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Server.dir/Deserilizer.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\first\IPCone\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Server.dir/Deserilizer.cpp.obj"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Server.dir\Deserilizer.cpp.obj -c E:\first\IPCone\Deserilizer.cpp
 
 CMakeFiles/Server.dir/Deserilizer.cpp.i: cmake_force
@@ -250,7 +202,7 @@ CMakeFiles/Server.dir/Deserilizer.cpp.obj.provides.build: CMakeFiles/Server.dir/
 
 CMakeFiles/Server.dir/OperatorResolver.cpp.obj: CMakeFiles/Server.dir/flags.make
 CMakeFiles/Server.dir/OperatorResolver.cpp.obj: ../OperatorResolver.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\first\IPCone\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Server.dir/OperatorResolver.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\first\IPCone\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Server.dir/OperatorResolver.cpp.obj"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Server.dir\OperatorResolver.cpp.obj -c E:\first\IPCone\OperatorResolver.cpp
 
 CMakeFiles/Server.dir/OperatorResolver.cpp.i: cmake_force
@@ -272,33 +224,9 @@ CMakeFiles/Server.dir/OperatorResolver.cpp.obj.provides: CMakeFiles/Server.dir/O
 CMakeFiles/Server.dir/OperatorResolver.cpp.obj.provides.build: CMakeFiles/Server.dir/OperatorResolver.cpp.obj
 
 
-CMakeFiles/Server.dir/ResponceHandler.cpp.obj: CMakeFiles/Server.dir/flags.make
-CMakeFiles/Server.dir/ResponceHandler.cpp.obj: ../ResponceHandler.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\first\IPCone\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Server.dir/ResponceHandler.cpp.obj"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Server.dir\ResponceHandler.cpp.obj -c E:\first\IPCone\ResponceHandler.cpp
-
-CMakeFiles/Server.dir/ResponceHandler.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Server.dir/ResponceHandler.cpp.i"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\first\IPCone\ResponceHandler.cpp > CMakeFiles\Server.dir\ResponceHandler.cpp.i
-
-CMakeFiles/Server.dir/ResponceHandler.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Server.dir/ResponceHandler.cpp.s"
-	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\first\IPCone\ResponceHandler.cpp -o CMakeFiles\Server.dir\ResponceHandler.cpp.s
-
-CMakeFiles/Server.dir/ResponceHandler.cpp.obj.requires:
-
-.PHONY : CMakeFiles/Server.dir/ResponceHandler.cpp.obj.requires
-
-CMakeFiles/Server.dir/ResponceHandler.cpp.obj.provides: CMakeFiles/Server.dir/ResponceHandler.cpp.obj.requires
-	$(MAKE) -f CMakeFiles\Server.dir\build.make CMakeFiles/Server.dir/ResponceHandler.cpp.obj.provides.build
-.PHONY : CMakeFiles/Server.dir/ResponceHandler.cpp.obj.provides
-
-CMakeFiles/Server.dir/ResponceHandler.cpp.obj.provides.build: CMakeFiles/Server.dir/ResponceHandler.cpp.obj
-
-
 CMakeFiles/Server.dir/Examples/ExampleFunctions.cpp.obj: CMakeFiles/Server.dir/flags.make
 CMakeFiles/Server.dir/Examples/ExampleFunctions.cpp.obj: ../Examples/ExampleFunctions.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\first\IPCone\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Server.dir/Examples/ExampleFunctions.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\first\IPCone\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Server.dir/Examples/ExampleFunctions.cpp.obj"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Server.dir\Examples\ExampleFunctions.cpp.obj -c E:\first\IPCone\Examples\ExampleFunctions.cpp
 
 CMakeFiles/Server.dir/Examples/ExampleFunctions.cpp.i: cmake_force
@@ -322,7 +250,7 @@ CMakeFiles/Server.dir/Examples/ExampleFunctions.cpp.obj.provides.build: CMakeFil
 
 CMakeFiles/Server.dir/Examples/Movie.cpp.obj: CMakeFiles/Server.dir/flags.make
 CMakeFiles/Server.dir/Examples/Movie.cpp.obj: ../Examples/Movie.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\first\IPCone\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/Server.dir/Examples/Movie.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\first\IPCone\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/Server.dir/Examples/Movie.cpp.obj"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Server.dir\Examples\Movie.cpp.obj -c E:\first\IPCone\Examples\Movie.cpp
 
 CMakeFiles/Server.dir/Examples/Movie.cpp.i: cmake_force
@@ -346,7 +274,7 @@ CMakeFiles/Server.dir/Examples/Movie.cpp.obj.provides.build: CMakeFiles/Server.d
 
 CMakeFiles/Server.dir/Examples/Cinema.cpp.obj: CMakeFiles/Server.dir/flags.make
 CMakeFiles/Server.dir/Examples/Cinema.cpp.obj: ../Examples/Cinema.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\first\IPCone\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/Server.dir/Examples/Cinema.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\first\IPCone\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/Server.dir/Examples/Cinema.cpp.obj"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Server.dir\Examples\Cinema.cpp.obj -c E:\first\IPCone\Examples\Cinema.cpp
 
 CMakeFiles/Server.dir/Examples/Cinema.cpp.i: cmake_force
@@ -370,7 +298,7 @@ CMakeFiles/Server.dir/Examples/Cinema.cpp.obj.provides.build: CMakeFiles/Server.
 
 CMakeFiles/Server.dir/ObjectPool.cpp.obj: CMakeFiles/Server.dir/flags.make
 CMakeFiles/Server.dir/ObjectPool.cpp.obj: ../ObjectPool.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\first\IPCone\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/Server.dir/ObjectPool.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\first\IPCone\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/Server.dir/ObjectPool.cpp.obj"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Server.dir\ObjectPool.cpp.obj -c E:\first\IPCone\ObjectPool.cpp
 
 CMakeFiles/Server.dir/ObjectPool.cpp.i: cmake_force
@@ -399,11 +327,8 @@ Server_OBJECTS = \
 "CMakeFiles/Server.dir/MessageBuilder.cpp.obj" \
 "CMakeFiles/Server.dir/Serilizer.cpp.obj" \
 "CMakeFiles/Server.dir/Sender.cpp.obj" \
-"CMakeFiles/Server.dir/Message.cpp.obj" \
-"CMakeFiles/Server.dir/Buffer.cpp.obj" \
 "CMakeFiles/Server.dir/Deserilizer.cpp.obj" \
 "CMakeFiles/Server.dir/OperatorResolver.cpp.obj" \
-"CMakeFiles/Server.dir/ResponceHandler.cpp.obj" \
 "CMakeFiles/Server.dir/Examples/ExampleFunctions.cpp.obj" \
 "CMakeFiles/Server.dir/Examples/Movie.cpp.obj" \
 "CMakeFiles/Server.dir/Examples/Cinema.cpp.obj" \
@@ -417,11 +342,8 @@ Server.exe: CMakeFiles/Server.dir/Receiver.cpp.obj
 Server.exe: CMakeFiles/Server.dir/MessageBuilder.cpp.obj
 Server.exe: CMakeFiles/Server.dir/Serilizer.cpp.obj
 Server.exe: CMakeFiles/Server.dir/Sender.cpp.obj
-Server.exe: CMakeFiles/Server.dir/Message.cpp.obj
-Server.exe: CMakeFiles/Server.dir/Buffer.cpp.obj
 Server.exe: CMakeFiles/Server.dir/Deserilizer.cpp.obj
 Server.exe: CMakeFiles/Server.dir/OperatorResolver.cpp.obj
-Server.exe: CMakeFiles/Server.dir/ResponceHandler.cpp.obj
 Server.exe: CMakeFiles/Server.dir/Examples/ExampleFunctions.cpp.obj
 Server.exe: CMakeFiles/Server.dir/Examples/Movie.cpp.obj
 Server.exe: CMakeFiles/Server.dir/Examples/Cinema.cpp.obj
@@ -430,7 +352,7 @@ Server.exe: CMakeFiles/Server.dir/build.make
 Server.exe: CMakeFiles/Server.dir/linklibs.rsp
 Server.exe: CMakeFiles/Server.dir/objects1.rsp
 Server.exe: CMakeFiles/Server.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=E:\first\IPCone\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable Server.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=E:\first\IPCone\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX executable Server.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Server.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -443,11 +365,8 @@ CMakeFiles/Server.dir/requires: CMakeFiles/Server.dir/Receiver.cpp.obj.requires
 CMakeFiles/Server.dir/requires: CMakeFiles/Server.dir/MessageBuilder.cpp.obj.requires
 CMakeFiles/Server.dir/requires: CMakeFiles/Server.dir/Serilizer.cpp.obj.requires
 CMakeFiles/Server.dir/requires: CMakeFiles/Server.dir/Sender.cpp.obj.requires
-CMakeFiles/Server.dir/requires: CMakeFiles/Server.dir/Message.cpp.obj.requires
-CMakeFiles/Server.dir/requires: CMakeFiles/Server.dir/Buffer.cpp.obj.requires
 CMakeFiles/Server.dir/requires: CMakeFiles/Server.dir/Deserilizer.cpp.obj.requires
 CMakeFiles/Server.dir/requires: CMakeFiles/Server.dir/OperatorResolver.cpp.obj.requires
-CMakeFiles/Server.dir/requires: CMakeFiles/Server.dir/ResponceHandler.cpp.obj.requires
 CMakeFiles/Server.dir/requires: CMakeFiles/Server.dir/Examples/ExampleFunctions.cpp.obj.requires
 CMakeFiles/Server.dir/requires: CMakeFiles/Server.dir/Examples/Movie.cpp.obj.requires
 CMakeFiles/Server.dir/requires: CMakeFiles/Server.dir/Examples/Cinema.cpp.obj.requires

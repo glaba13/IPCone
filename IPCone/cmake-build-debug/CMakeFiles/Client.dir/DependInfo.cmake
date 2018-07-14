@@ -4,17 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "E:/first/IPCone/Buffer.cpp" "E:/first/IPCone/cmake-build-debug/CMakeFiles/Client.dir/Buffer.cpp.obj"
   "E:/first/IPCone/Deserilizer.cpp" "E:/first/IPCone/cmake-build-debug/CMakeFiles/Client.dir/Deserilizer.cpp.obj"
   "E:/first/IPCone/Examples/Cinema.cpp" "E:/first/IPCone/cmake-build-debug/CMakeFiles/Client.dir/Examples/Cinema.cpp.obj"
   "E:/first/IPCone/Examples/ExampleFunctions.cpp" "E:/first/IPCone/cmake-build-debug/CMakeFiles/Client.dir/Examples/ExampleFunctions.cpp.obj"
   "E:/first/IPCone/Examples/Movie.cpp" "E:/first/IPCone/cmake-build-debug/CMakeFiles/Client.dir/Examples/Movie.cpp.obj"
-  "E:/first/IPCone/Message.cpp" "E:/first/IPCone/cmake-build-debug/CMakeFiles/Client.dir/Message.cpp.obj"
   "E:/first/IPCone/MessageBuilder.cpp" "E:/first/IPCone/cmake-build-debug/CMakeFiles/Client.dir/MessageBuilder.cpp.obj"
   "E:/first/IPCone/ObjectPool.cpp" "E:/first/IPCone/cmake-build-debug/CMakeFiles/Client.dir/ObjectPool.cpp.obj"
   "E:/first/IPCone/OperatorResolver.cpp" "E:/first/IPCone/cmake-build-debug/CMakeFiles/Client.dir/OperatorResolver.cpp.obj"
   "E:/first/IPCone/Receiver.cpp" "E:/first/IPCone/cmake-build-debug/CMakeFiles/Client.dir/Receiver.cpp.obj"
-  "E:/first/IPCone/ResponceHandler.cpp" "E:/first/IPCone/cmake-build-debug/CMakeFiles/Client.dir/ResponceHandler.cpp.obj"
   "E:/first/IPCone/Sender.cpp" "E:/first/IPCone/cmake-build-debug/CMakeFiles/Client.dir/Sender.cpp.obj"
   "E:/first/IPCone/Serilizer.cpp" "E:/first/IPCone/cmake-build-debug/CMakeFiles/Client.dir/Serilizer.cpp.obj"
   "E:/first/IPCone/client.cpp" "E:/first/IPCone/cmake-build-debug/CMakeFiles/Client.dir/client.cpp.obj"

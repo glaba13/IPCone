@@ -5,11 +5,19 @@
 #include <iostream>
 #include "ExampleFunctions.h"
 
-
-int incrementInt(int i){
+/**
+ * Example Functuion, Increments integer
+ * @param i
+ * @return
+ */
+int incrementInt(int i) {
     return i + 1;
 }
 
-void printText(string text){
-    cout<<">>>>>>>>>>> RUN TEST FUN >>> "<<text<<"\n\n"<<endl;
+/**
+ * Example function: Prints Text
+ * @param text
+ */
+void printText(string text) {
+    cout << ">>>>>>>>>>> RUN TEST FUN >>> " << text << "\n\n" << endl;
 }

@@ -1,7 +1,6 @@
 #include <windows.h>
 #include <stdio.h>
 #include <tchar.h>
-#include <strsafe.h>
 #include "Receiver.h"
 #include "Sender.h"
 #include "OperatorResolver.h"
@@ -9,24 +8,22 @@
 #define BUFSIZE 512
 
 DWORD WINAPI InstanceThread(LPVOID);
+
 VOID GetAnswerToRequest(LPTSTR, LPTSTR, LPDWORD);
 
-int _tmain(VOID)
-{
-    BOOL   fConnected = FALSE;
-    DWORD  dwThreadId = 0;
+/**
+ * Main Function for Server
+ * @return
+ */
+int _tmain(VOID) {
+    BOOL fConnected = FALSE;
+    DWORD dwThreadId = 0;
     HANDLE hPipe = INVALID_HANDLE_VALUE, hThread = NULL;
     LPTSTR lpszPipename = LPTSTR(TEXT("\\\\.\\pipe\\StreamLabsPipe"));
 
-// The main loop creates an instance of the named pipe and 
-// then waits for a client to connect to it. When the client 
-// connects, a thread is created to handle communications 
-// with that client, and this loop is free to wait for the
-// next client connect request. It is an infinite loop.
 
-    for (;;)
-    {
-        _tprintf( TEXT("\nPipe IPCone: Main thread awaiting client connection on %s\n"), lpszPipename);
+    for (;;) {
+        _tprintf(TEXT("\nPipe IPCone: Main thread awaiting client connection on %s\n"), lpszPipename);
         hPipe = CreateNamedPipe(
                 lpszPipename,             // pipe name 
                 PIPE_ACCESS_DUPLEX,       // read/write access 
@@ -39,24 +36,17 @@ int _tmain(VOID)
                 0,                        // client time-out 
                 NULL);                    // default security attribute 
 
-        if (hPipe == INVALID_HANDLE_VALUE)
-        {
+        if (hPipe == INVALID_HANDLE_VALUE) {
             _tprintf(TEXT("CreateNamedPipe failed, GLE=%d.\n"), GetLastError());
             return -1;
         }
 
-        // Wait for the client to connect; if it succeeds, 
-        // the function returns a nonzero value. If the function
-        // returns zero, GetLastError returns ERROR_PIPE_CONNECTED. 
-
         fConnected = ConnectNamedPipe(hPipe, NULL) ?
                      TRUE : (GetLastError() == ERROR_PIPE_CONNECTED);
 
-        if (fConnected)
-        {
+        if (fConnected) {
             printf("Client connected, creating a processing thread.\n");
 
-            // Create a thread for this client. 
             hThread = CreateThread(
                     NULL,              // no security attribute 
                     0,                 // default stack size 
@@ -65,14 +55,11 @@ int _tmain(VOID)
                     0,                 // not suspended 
                     &dwThreadId);      // returns thread ID 
 
-            if (hThread == NULL)
-            {
+            if (hThread == NULL) {
                 _tprintf(TEXT("CreateThread failed, GLE=%d.\n"), GetLastError());
                 return -1;
-            }
-            else CloseHandle(hThread);
-        }
-        else
+            } else CloseHandle(hThread);
+        } else
             // The client could not connect, so close the pipe. 
             CloseHandle(hPipe);
     }
@@ -80,82 +67,67 @@ int _tmain(VOID)
     return 0;
 }
 
-DWORD WINAPI InstanceThread(LPVOID lpvParam)
-// This routine is a thread processing function to read from and reply to a client
-// via the open pipe connection passed from the main loop. Note this allows
-// the main loop to continue executing, potentially creating more threads of
-// of this procedure to run concurrently, depending on the number of incoming
-// client connections.
-{
-    HANDLE hHeap      = GetProcessHeap();
-    TCHAR* pchRequest = (TCHAR*)HeapAlloc(hHeap, 0, BUFSIZE*sizeof(TCHAR));
-    TCHAR* pchReply   = (TCHAR*)HeapAlloc(hHeap, 0, BUFSIZE*sizeof(TCHAR));
+/**
+ * function for Thread Runner
+ * @param lpvParam
+ * @return
+ */
+DWORD WINAPI InstanceThread(LPVOID lpvParam) {
+    HANDLE hHeap = GetProcessHeap();
+    TCHAR *pchRequest = (TCHAR *) HeapAlloc(hHeap, 0, BUFSIZE * sizeof(TCHAR));
+    TCHAR *pchReply = (TCHAR *) HeapAlloc(hHeap, 0, BUFSIZE * sizeof(TCHAR));
 
-    DWORD  cbReplyBytes = 0, cbWritten = 0;
-    BOOL fSuccess = FALSE;
-    HANDLE hPipe  = NULL;
+    HANDLE hPipe = NULL;
 
-    // Do some extra error checking since the app will keep running even if this
-    // thread fails.
 
-    if (lpvParam == NULL)
-    {
-        printf( "\nERROR - Pipe IPCone Failure:\n");
-        printf( "   InstanceThread got an unexpected NULL value in lpvParam.\n");
-        printf( "   InstanceThread exitting.\n");
+    if (lpvParam == NULL) {
+        printf("\nERROR - Pipe IPCone Failure:\n");
+        printf("   InstanceThread got an unexpected NULL value in lpvParam.\n");
+        printf("   InstanceThread exitting.\n");
         if (pchReply != NULL) HeapFree(hHeap, 0, pchReply);
         if (pchRequest != NULL) HeapFree(hHeap, 0, pchRequest);
-        return (DWORD)-1;
+        return (DWORD) -1;
     }
 
-    if (pchRequest == NULL)
-    {
-        printf( "\nERROR - Pipe IPCone Failure:\n");
-        printf( "   InstanceThread got an unexpected NULL heap allocation.\n");
-        printf( "   InstanceThread exitting.\n");
+    if (pchRequest == NULL) {
+        printf("\nERROR - Pipe IPCone Failure:\n");
+        printf("   InstanceThread got an unexpected NULL heap allocation.\n");
+        printf("   InstanceThread exitting.\n");
         if (pchReply != NULL) HeapFree(hHeap, 0, pchReply);
-        return (DWORD)-1;
+        return (DWORD) -1;
     }
 
-    if (pchReply == NULL)
-    {
-        printf( "\nERROR - Pipe IPCone Failure:\n");
-        printf( "   InstanceThread got an unexpected NULL heap allocation.\n");
-        printf( "   InstanceThread exitting.\n");
+    if (pchReply == NULL) {
+        printf("\nERROR - Pipe IPCone Failure:\n");
+        printf("   InstanceThread got an unexpected NULL heap allocation.\n");
+        printf("   InstanceThread exitting.\n");
         if (pchRequest != NULL) HeapFree(hHeap, 0, pchRequest);
-        return (DWORD)-1;
+        return (DWORD) -1;
     }
 
-    // Print verbose messages. In production code, this should be for debugging only.
+
     printf("InstanceThread created, receiving and processing messages.\n");
 
-// The thread's parameter is a handle to a pipe object instance. 
 
     hPipe = (HANDLE) lpvParam;
 
-// Loop until done reading
-    while (1)
-    {
-        // Read client requests from the pipe. This simplistic code only allows messages
-        // up to BUFSIZE characters in length.
+    while (1) {
         Message request;
-        if(!receiveMessage(hPipe, request)){
-            printf("Failed to receive message.\n");
+        //receive request
+        if (!receiveMessage(hPipe, request)) {
             break;
         }
-        // Process the incoming message.
+
+        //get response buffer
         Buffer response = resolveOperator(request);
 
-      if(!sendData(hPipe, response, "Sending Response")) {
-          printf("Failed to send message.\n");
-          break;
-      }
+        //send response
+        if (!sendData(hPipe, response, "Sending Response")) {
+            printf("Failed to send message.\n");
+            break;
+        }
 
     }
-
-// Flush the pipe to allow the client to read the pipe's contents 
-// before disconnecting. Then disconnect the pipe, and close the 
-// handle to this pipe instance. 
 
     FlushFileBuffers(hPipe);
     DisconnectNamedPipe(hPipe);
@@ -168,24 +140,3 @@ DWORD WINAPI InstanceThread(LPVOID lpvParam)
     return 1;
 }
 
-VOID GetAnswerToRequest( LPTSTR pchRequest,
-                         LPTSTR pchReply,
-                         LPDWORD pchBytes )
-// This routine is a simple function to print the client request to the console
-// and populate the reply buffer with a default data string. This is where you
-// would put the actual client request processing code that runs in the context
-// of an instance thread. Keep in mind the main thread will continue to wait for
-// and receive other client connections while the instance thread is working.
-{
-    _tprintf( TEXT("Client Message String:\"%s\"\n"), pchRequest );
-
-    // Check the outgoing message to make sure it's not too long for the buffer.
-    if (FAILED(StringCchCopy( pchReply, BUFSIZE, TEXT("default answer from server") )))
-    {
-        *pchBytes = 0;
-        pchReply[0] = 0;
-        printf("StringCchCopy failed, no outgoing message.\n");
-        return;
-    }
-    *pchBytes = (lstrlen(pchReply)+1)*sizeof(TCHAR);
-}

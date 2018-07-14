@@ -9,7 +9,22 @@
 #include <fibersapi.h>
 #include "Message.h"
 
-BOOL   receiveMessage(HANDLE hPipe, Message &request);
-BOOL   receiveMessage(HANDLE hPipe, Message &request, OVERLAPPED *ov);
+/**
+ * Generic Receive message function:
+ * Reads from pipe and parses
+ * @param hPipe
+ * @param request
+ * @return
+ */
+BOOL receiveMessage(HANDLE hPipe, Message &request);
+
+/**
+ * Only synchronous message receiver function
+ * @param hPipe
+ * @param request
+ * @param ov
+ * @return
+ */
+BOOL receiveMessage(HANDLE hPipe, Message &request, OVERLAPPED *ov);
 
 #endif //SERVER_RECEIVER_H

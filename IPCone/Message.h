@@ -9,6 +9,9 @@
 #include "protocol.h"
 #include "Buffer.h"
 
+/**
+ * Message structure (used for parsing)
+ */
 struct Message {
 
     OPERATIONS op;

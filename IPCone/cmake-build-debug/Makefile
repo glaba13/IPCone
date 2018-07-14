@@ -135,36 +135,6 @@ Client/fast:
 	$(MAKE) -f CMakeFiles\Client.dir\build.make CMakeFiles/Client.dir/build
 .PHONY : Client/fast
 
-Buffer.obj: Buffer.cpp.obj
-
-.PHONY : Buffer.obj
-
-# target to build an object file
-Buffer.cpp.obj:
-	$(MAKE) -f CMakeFiles\Server.dir\build.make CMakeFiles/Server.dir/Buffer.cpp.obj
-	$(MAKE) -f CMakeFiles\Client.dir\build.make CMakeFiles/Client.dir/Buffer.cpp.obj
-.PHONY : Buffer.cpp.obj
-
-Buffer.i: Buffer.cpp.i
-
-.PHONY : Buffer.i
-
-# target to preprocess a source file
-Buffer.cpp.i:
-	$(MAKE) -f CMakeFiles\Server.dir\build.make CMakeFiles/Server.dir/Buffer.cpp.i
-	$(MAKE) -f CMakeFiles\Client.dir\build.make CMakeFiles/Client.dir/Buffer.cpp.i
-.PHONY : Buffer.cpp.i
-
-Buffer.s: Buffer.cpp.s
-
-.PHONY : Buffer.s
-
-# target to generate assembly for a file
-Buffer.cpp.s:
-	$(MAKE) -f CMakeFiles\Server.dir\build.make CMakeFiles/Server.dir/Buffer.cpp.s
-	$(MAKE) -f CMakeFiles\Client.dir\build.make CMakeFiles/Client.dir/Buffer.cpp.s
-.PHONY : Buffer.cpp.s
-
 Deserilizer.obj: Deserilizer.cpp.obj
 
 .PHONY : Deserilizer.obj
@@ -285,36 +255,6 @@ Examples/Movie.cpp.s:
 	$(MAKE) -f CMakeFiles\Client.dir\build.make CMakeFiles/Client.dir/Examples/Movie.cpp.s
 .PHONY : Examples/Movie.cpp.s
 
-Message.obj: Message.cpp.obj
-
-.PHONY : Message.obj
-
-# target to build an object file
-Message.cpp.obj:
-	$(MAKE) -f CMakeFiles\Server.dir\build.make CMakeFiles/Server.dir/Message.cpp.obj
-	$(MAKE) -f CMakeFiles\Client.dir\build.make CMakeFiles/Client.dir/Message.cpp.obj
-.PHONY : Message.cpp.obj
-
-Message.i: Message.cpp.i
-
-.PHONY : Message.i
-
-# target to preprocess a source file
-Message.cpp.i:
-	$(MAKE) -f CMakeFiles\Server.dir\build.make CMakeFiles/Server.dir/Message.cpp.i
-	$(MAKE) -f CMakeFiles\Client.dir\build.make CMakeFiles/Client.dir/Message.cpp.i
-.PHONY : Message.cpp.i
-
-Message.s: Message.cpp.s
-
-.PHONY : Message.s
-
-# target to generate assembly for a file
-Message.cpp.s:
-	$(MAKE) -f CMakeFiles\Server.dir\build.make CMakeFiles/Server.dir/Message.cpp.s
-	$(MAKE) -f CMakeFiles\Client.dir\build.make CMakeFiles/Client.dir/Message.cpp.s
-.PHONY : Message.cpp.s
-
 MessageBuilder.obj: MessageBuilder.cpp.obj
 
 .PHONY : MessageBuilder.obj
@@ -434,36 +374,6 @@ Receiver.cpp.s:
 	$(MAKE) -f CMakeFiles\Server.dir\build.make CMakeFiles/Server.dir/Receiver.cpp.s
 	$(MAKE) -f CMakeFiles\Client.dir\build.make CMakeFiles/Client.dir/Receiver.cpp.s
 .PHONY : Receiver.cpp.s
-
-ResponceHandler.obj: ResponceHandler.cpp.obj
-
-.PHONY : ResponceHandler.obj
-
-# target to build an object file
-ResponceHandler.cpp.obj:
-	$(MAKE) -f CMakeFiles\Server.dir\build.make CMakeFiles/Server.dir/ResponceHandler.cpp.obj
-	$(MAKE) -f CMakeFiles\Client.dir\build.make CMakeFiles/Client.dir/ResponceHandler.cpp.obj
-.PHONY : ResponceHandler.cpp.obj
-
-ResponceHandler.i: ResponceHandler.cpp.i
-
-.PHONY : ResponceHandler.i
-
-# target to preprocess a source file
-ResponceHandler.cpp.i:
-	$(MAKE) -f CMakeFiles\Server.dir\build.make CMakeFiles/Server.dir/ResponceHandler.cpp.i
-	$(MAKE) -f CMakeFiles\Client.dir\build.make CMakeFiles/Client.dir/ResponceHandler.cpp.i
-.PHONY : ResponceHandler.cpp.i
-
-ResponceHandler.s: ResponceHandler.cpp.s
-
-.PHONY : ResponceHandler.s
-
-# target to generate assembly for a file
-ResponceHandler.cpp.s:
-	$(MAKE) -f CMakeFiles\Server.dir\build.make CMakeFiles/Server.dir/ResponceHandler.cpp.s
-	$(MAKE) -f CMakeFiles\Client.dir\build.make CMakeFiles/Client.dir/ResponceHandler.cpp.s
-.PHONY : ResponceHandler.cpp.s
 
 Sender.obj: Sender.cpp.obj
 
@@ -589,9 +499,6 @@ help:
 	@echo ... Client
 	@echo ... edit_cache
 	@echo ... rebuild_cache
-	@echo ... Buffer.obj
-	@echo ... Buffer.i
-	@echo ... Buffer.s
 	@echo ... Deserilizer.obj
 	@echo ... Deserilizer.i
 	@echo ... Deserilizer.s
@@ -604,9 +511,6 @@ help:
 	@echo ... Examples/Movie.obj
 	@echo ... Examples/Movie.i
 	@echo ... Examples/Movie.s
-	@echo ... Message.obj
-	@echo ... Message.i
-	@echo ... Message.s
 	@echo ... MessageBuilder.obj
 	@echo ... MessageBuilder.i
 	@echo ... MessageBuilder.s
@@ -619,9 +523,6 @@ help:
 	@echo ... Receiver.obj
 	@echo ... Receiver.i
 	@echo ... Receiver.s
-	@echo ... ResponceHandler.obj
-	@echo ... ResponceHandler.i
-	@echo ... ResponceHandler.s
 	@echo ... Sender.obj
 	@echo ... Sender.i
 	@echo ... Sender.s

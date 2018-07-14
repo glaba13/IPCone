@@ -11,6 +11,9 @@
 #include <stdio.h>
 #include <tchar.h>
 
+/**
+ * Buffer Structure with data and length: Use for simplicity
+ */
 struct Buffer {
     DWORD length;
     char data[BUFFER_SIZE];

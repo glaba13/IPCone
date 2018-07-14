@@ -5,12 +5,19 @@
 
 #include "ObjectPool.h"
 
-
-
+/**
+ * Thread Safe Approach
+ */
 #define synchronized(m) \
     for(std::unique_lock<std::recursive_mutex> lk(m); lk; lk.unlock())
 
-int ObjectPool::registerObject(void * obj) {
+
+/**
+ * Object Registration: returned ID descriptor
+ * @param obj
+ * @return
+ */
+int ObjectPool::registerObject(void *obj) {
     int indVal = 0;
     synchronized(m_mutex) {
         this->poolObj[index++] = obj;
@@ -19,7 +26,12 @@ int ObjectPool::registerObject(void * obj) {
     return indVal;
 }
 
-void * ObjectPool::getObject(int id) {
+/**
+ * Returns object with the associated ID
+ * @param id
+ * @return
+ */
+void *ObjectPool::getObject(int id) {
     void *res = nullptr;
     synchronized(m_mutex) {
         res = this->poolObj[id];

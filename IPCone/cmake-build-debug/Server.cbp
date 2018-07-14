@@ -122,10 +122,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="E:/first/IPCone/Buffer.cpp">
-			<Option target="Server"/>
-			<Option target="Client"/>
-		</Unit>
 		<Unit filename="E:/first/IPCone/Buffer.h">
 			<Option target="Server"/>
 			<Option target="Client"/>
@@ -162,10 +158,6 @@
 			<Option target="Server"/>
 			<Option target="Client"/>
 		</Unit>
-		<Unit filename="E:/first/IPCone/Message.cpp">
-			<Option target="Server"/>
-			<Option target="Client"/>
-		</Unit>
 		<Unit filename="E:/first/IPCone/Message.h">
 			<Option target="Server"/>
 			<Option target="Client"/>
@@ -199,14 +191,6 @@
 			<Option target="Client"/>
 		</Unit>
 		<Unit filename="E:/first/IPCone/Receiver.h">
-			<Option target="Server"/>
-			<Option target="Client"/>
-		</Unit>
-		<Unit filename="E:/first/IPCone/ResponceHandler.cpp">
-			<Option target="Server"/>
-			<Option target="Client"/>
-		</Unit>
-		<Unit filename="E:/first/IPCone/ResponceHandler.h">
 			<Option target="Server"/>
 			<Option target="Client"/>
 		</Unit>

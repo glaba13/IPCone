@@ -12,13 +12,32 @@
 
 using namespace std;
 
-void deserilizeInt(int &value, char * buffer);
+/**
+ * Int Deserilizer
+ * @param value
+ * @param buffer
+ */
+void deserilizeInt(int &value, char *buffer);
 
+/**
+ * String Deserilizer
+ * @param buffer
+ * @return
+ */
+string deserilizeStr(char *buffer);
 
-string deserilizeStr(char * buffer);
-
+/**
+ * Short Deserilizer
+ * @param value
+ * @param buffer
+ */
 void deserilizeShort(short &value, char *buffer);
 
-void deserilizeMovie(Movie *m, char * buffer);
+/**
+ * Movie Deserilizer
+ * @param m
+ * @param buffer
+ */
+void deserilizeMovie(Movie *m, char *buffer);
 
 #endif //SERVER_DESERILIZER_H

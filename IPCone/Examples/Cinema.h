@@ -10,15 +10,30 @@
 #include "Movie.h"
 
 using namespace std;
+
+/**
+ * Cinema class with main Movie [Example]
+ */
 class Cinema {
 
 
 public:
 
-
+/**
+ *  Constrcutor with Main Movie
+ * @param mainMovie
+ */
     Cinema(Movie mainMovie);
 
+/**
+ * Get the main Movie
+ * @return Movie
+ */
     Movie getMainMovie();
+
+/**
+ * Main Movie variable (Pulic for use)
+ */
     Movie mainMovie;
 };
 

@@ -3,19 +3,14 @@
 //
 
 #include "Receiver.h"
-#include "Buffer.h"
-#include "Message.h"
 #include "Deserilizer.h"
-
-#include <windows.h>
-#include <stdio.h>
-#include <tchar.h>
-#include <strsafe.h>
 
 #define BUFSIZE 512
 
-
-enum STATE_RECEIVER{
+/**
+ * STATES for PARSER of Message
+ */
+enum STATE_RECEIVER {
     STATE_RECEIVER_START,
     STATE_RECEIVER_OP,
     STATE_RECEIVER_BUFF_NUM,
@@ -23,6 +18,7 @@ enum STATE_RECEIVER{
     STATE_RECEIVER_END,
 };
 
+//Declarations
 
 bool handleStart(unsigned char start);
 
@@ -30,10 +26,18 @@ bool handleOP(char op, Message &request);
 
 bool handleBuffNum(char *data, DWORD *num);
 
-BOOL receive(HANDLE hPipe, int num, Buffer & buffer, OVERLAPPED *ov ) {
+/**
+ * General receive function from Pipe Reading
+ * @param hPipe
+ * @param num
+ * @param buffer
+ * @param ov
+ * @return
+ */
+BOOL receive(HANDLE hPipe, int num, Buffer &buffer, OVERLAPPED *ov) {
     buffer.length = 0;
     BOOL fSuccess = FALSE;
-    if(num < 0){
+    if (num <= 0) {
         return TRUE;
     }
 
@@ -44,24 +48,20 @@ BOOL receive(HANDLE hPipe, int num, Buffer & buffer, OVERLAPPED *ov ) {
             &buffer.length, // number of bytes read
             ov);        // not overlapped I/O
 
-    if(ov != NULL){
+    if (ov != NULL) {
         fSuccess = GetOverlappedResult(hPipe, ov, &buffer.length, TRUE);
     }
 
 
-    if (!fSuccess || buffer.length != num)
-    {
+    if (!fSuccess || buffer.length != num) {
 
         int err = GetLastError();
-        if(err == ERROR_MORE_DATA) {
+        if (err == ERROR_MORE_DATA) {
             return TRUE;
         }
-        if (err == ERROR_BROKEN_PIPE)
-        {
+        if (err == ERROR_BROKEN_PIPE) {
             _tprintf(TEXT("InstanceThread: client disconnected.\n"), GetLastError());
-        }
-        else
-        {
+        } else {
             _tprintf(TEXT("InstanceThread ReadFile failed, GLE=%d.\n"), GetLastError());
         }
         return false;
@@ -70,32 +70,49 @@ BOOL receive(HANDLE hPipe, int num, Buffer & buffer, OVERLAPPED *ov ) {
     return true;
 }
 
-
+/*
+ * Operation Handler
+ */
 bool handleOP(char op, Message &request) {
 
-    switch(op) {
-        default:return false;
+    switch (op) {
+        default:
+            return false;
         case OP_DATA:
         case OP_FUNCTION:
         case OP_METHOD:
         case OP_CREATE_OBJ:
         case OP_GET_ATTRIBUTE:
         case OP_RESPONSE:
-            request.op = (OPERATIONS)op;
+            request.op = (OPERATIONS) op;
             return true;
     }
 }
 
+/**
+ * Checks for Start byte synchronisation
+ * @param start
+ * @return
+ */
 bool handleStart(unsigned char start) {
     return start == SYNCH_START;
 }
+
+/**
+ * Checks for end byte synchronisation
+ * @param start
+ * @return
+ */
 bool handleEnd(unsigned char start) {
     return start == SYNCH_END;
 }
 
-
-
-
+/**
+ * Gets the buffer size
+ * @param data
+ * @param num
+ * @return
+ */
 bool handleBuffNum(char *data, DWORD *num) {
     int numInt = 0;
     deserilizeInt(numInt, data);
@@ -103,31 +120,37 @@ bool handleBuffNum(char *data, DWORD *num) {
     return TRUE;
 }
 
-
-BOOL   receiveMessage(HANDLE hPipe, Message &request, OVERLAPPED *ov) {
+/**
+ * Receive Message Implementation
+ * @param hPipe
+ * @param request
+ * @param ov
+ * @return
+ */
+BOOL receiveMessage(HANDLE hPipe, Message &request, OVERLAPPED *ov) {
     Buffer buffer;
     int numToRead = 1;
     BOOL fSuccess = FALSE;
     STATE_RECEIVER state = STATE_RECEIVER_START;
-    while(1) {
+    while (1) {
         fSuccess = receive(hPipe, numToRead, buffer, ov);
-        if(!fSuccess){
+        if (!fSuccess) {
 
             return FALSE;
         }
-        switch(state) {
+        switch (state) {
 
             case STATE_RECEIVER_START:
-                if(handleStart(buffer.data[0])) {
+                if (handleStart(buffer.data[0])) {
                     state = STATE_RECEIVER_OP;
-                }else{
+                } else {
                     return false;
                 }
                 break;
 
             case STATE_RECEIVER_OP:
                 fSuccess = handleOP(buffer.data[0], request);
-                if(!fSuccess){
+                if (!fSuccess) {
                     _tprintf(TEXT("Invalid Operation.\n"));
                     return FALSE;
                 }
@@ -136,7 +159,7 @@ BOOL   receiveMessage(HANDLE hPipe, Message &request, OVERLAPPED *ov) {
                 break;
             case STATE_RECEIVER_BUFF_NUM:
                 fSuccess = handleBuffNum(buffer.data, &request.buff.length);
-                if(!fSuccess){
+                if (!fSuccess) {
                     _tprintf(TEXT("Invalid number.\n"));
                     return FALSE;
                 }
@@ -150,7 +173,7 @@ BOOL   receiveMessage(HANDLE hPipe, Message &request, OVERLAPPED *ov) {
                 break;
             case STATE_RECEIVER_END:
                 fSuccess = handleEnd(buffer.data[0]);
-                if(!fSuccess){
+                if (!fSuccess) {
                     _tprintf(TEXT("Invalid end.\n"));
                     return FALSE;
                 }
@@ -166,6 +189,6 @@ BOOL   receiveMessage(HANDLE hPipe, Message &request, OVERLAPPED *ov) {
 /// \param hPipe
 /// \param request
 /// \return
-BOOL   receiveMessage(HANDLE hPipe, Message &request) {
-    return receiveMessage(hPipe,request, NULL);
+BOOL receiveMessage(HANDLE hPipe, Message &request) {
+    return receiveMessage(hPipe, request, NULL);
 }

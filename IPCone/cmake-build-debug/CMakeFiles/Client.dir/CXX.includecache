@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-E:/first/IPCone/Buffer.cpp
-Buffer.h
-E:/first/IPCone/Buffer.h
-
 E:/first/IPCone/Buffer.h
 windows.h
 -
@@ -21,12 +17,6 @@ tchar.h
 E:/first/IPCone/Deserilizer.cpp
 Deserilizer.h
 E:/first/IPCone/Deserilizer.h
-Buffer.h
-E:/first/IPCone/Buffer.h
-protocol.h
-E:/first/IPCone/protocol.h
-Examples/Movie.h
-E:/first/IPCone/Examples/Movie.h
 
 E:/first/IPCone/Deserilizer.h
 string
@@ -64,10 +54,6 @@ E:/first/IPCone/Examples/Movie.h
 string
 -
 
-E:/first/IPCone/Message.cpp
-Message.h
-E:/first/IPCone/Message.h
-
 E:/first/IPCone/Message.h
 protocol.h
 E:/first/IPCone/protocol.h
@@ -79,10 +65,6 @@ wchar.h
 -
 MessageBuilder.h
 E:/first/IPCone/MessageBuilder.h
-protocol.h
-E:/first/IPCone/protocol.h
-Buffer.h
-E:/first/IPCone/Buffer.h
 Serilizer.h
 E:/first/IPCone/Serilizer.h
 
@@ -106,8 +88,6 @@ mutex
 
 E:/first/IPCone/OperatorResolver.cpp
 iostream
--
-mutex
 -
 iomanip
 -
@@ -135,32 +115,14 @@ E:/first/IPCone/Message.h
 E:/first/IPCone/Receiver.cpp
 Receiver.h
 E:/first/IPCone/Receiver.h
-Buffer.h
-E:/first/IPCone/Buffer.h
-Message.h
-E:/first/IPCone/Message.h
 Deserilizer.h
 E:/first/IPCone/Deserilizer.h
-windows.h
--
-stdio.h
--
-tchar.h
--
-strsafe.h
--
 
 E:/first/IPCone/Receiver.h
 fibersapi.h
 -
 Message.h
 E:/first/IPCone/Message.h
-
-E:/first/IPCone/ResponceHandler.cpp
-ResponceHandler.h
-E:/first/IPCone/ResponceHandler.h
-
-E:/first/IPCone/ResponceHandler.h
 
 E:/first/IPCone/Sender.cpp
 Sender.h
@@ -183,8 +145,6 @@ E:/first/IPCone/Buffer.h
 E:/first/IPCone/Serilizer.cpp
 Serilizer.h
 E:/first/IPCone/Serilizer.h
-Examples/Movie.h
-E:/first/IPCone/Examples/Movie.h
 
 E:/first/IPCone/Serilizer.h
 string
