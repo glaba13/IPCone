@@ -1,0 +1,4 @@
+E:/first/IPCone/cmake-build-debug/CMakeFiles/Server.dir
+E:/first/IPCone/cmake-build-debug/CMakeFiles/Client.dir
+E:/first/IPCone/cmake-build-debug/CMakeFiles/edit_cache.dir
+E:/first/IPCone/cmake-build-debug/CMakeFiles/rebuild_cache.dir

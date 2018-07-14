@@ -1,0 +1,45 @@
+//
+// Created by Guri on 13/07/2018.
+//
+
+#ifndef SERVER_PROTOCOL_H
+#define SERVER_PROTOCOL_H
+enum OPERATIONS {
+    OP_DATA = 0x01,
+    OP_FUNCTION  = 0x02,
+    OP_METHOD  = 0x03,
+    OP_CREATE_OBJ  = 0x04,
+    OP_GET_ATTRIBUTE  = 0x05,
+    OP_RESPONSE  = 0x06,
+};
+
+
+#define SYNCH_START   (0xEF)
+#define SYNCH_END  (0xFC)
+#define PROTOCOL_NUMBER_SIZE  (4)
+
+enum FUNCTIONS {
+    FUN_INCREMENT = 0x01,
+    FUN_GET_TEXT = 0x02,
+
+};
+
+enum DATA_TYPES {
+    DATA_CHAR = 0x01,
+    DATA_BOOL,
+    DATA_SHORT,
+    DATA_INT,
+    DATA_DOUBLE,
+    DATA_STRING,
+
+    DATA_CINEMA,
+    DATA_MOVIE,
+
+};
+
+
+enum RESPONSE_STATUS {
+    OK_RESPONSE = 0x00,
+    ERROR_RESPONSE = 0x01,
+};
+#endif //SERVER_PROTOCOL_H
