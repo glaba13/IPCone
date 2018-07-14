@@ -26,32 +26,52 @@ void generateMessage(OPERATIONS op, Buffer&buff,  Buffer &buffRes) {
     buffRes.length = buff.length + 7;
 }
 
-void generateDataSendMessage(Buffer&buffSrc, Buffer &buffRes) {
-    generateMessage(OP_DATA, buffSrc, buffRes);
+void generateWithDesctiptor(int des, OPERATIONS op, Buffer&buffSrc, Buffer &buffRes) {
+    memmove(buffSrc.data + 4, buffSrc.data, buffSrc.length);
+    int dummy;
+    serilizeInt(des, buffSrc.data, &dummy);
+    buffSrc.length+=4;
+    generateMessage(op, buffSrc, buffRes);
+}
+
+void generateWithDesctiptor(int id, int des, OPERATIONS op, Buffer&buffSrc, Buffer &buffRes) {
+    memmove(buffSrc.data + 8, buffSrc.data, buffSrc.length);
+    int dummy;
+    serilizeInt(id, buffSrc.data, &dummy);
+    serilizeInt(des, buffSrc.data + 4, &dummy);
+    buffSrc.length+=8;
+    generateMessage(op, buffSrc, buffRes);
+}
+
+void generateDataSendMessage(DATA_TYPES type, Buffer&buffSrc, Buffer &buffRes) {
+    if(buffSrc.length > 0){
+        memcpy(buffSrc.data + 1, buffSrc.data, buffSrc.length);
+    }
+    buffSrc.data[0] = type;
+    buffSrc.length+=1;
+    generateMessage( OP_DATA, buffSrc, buffRes);
 }
 
 void generateCallFunMessage(FUNCTIONS fun, Buffer&buffSrc, Buffer &buffRes) {
-    memmove(buffSrc.data + 4, buffSrc.data, buffSrc.length);
-    buffSrc.data[0] = fun;
-    int dummy;
-    serilizeInt(fun, buffSrc.data, &dummy);
-    buffSrc.length+=4;
-    generateMessage(OP_FUNCTION, buffSrc, buffRes);
+    generateWithDesctiptor(fun, OP_FUNCTION, buffSrc, buffRes);
 }
 
-
-
-void generateCallMethodMessage(Buffer&buffSrc, Buffer &buffRes) {
-    generateMessage(OP_METHOD, buffSrc, buffRes);
+void generateCallMethodMessage(int id, METHODS type,Buffer&buffSrc, Buffer &buffRes) {
+    generateWithDesctiptor(type, id, OP_METHOD, buffSrc, buffRes);
 }
 
-void generateGetAttributeMessage(Buffer&buffSrc, Buffer &buffRes) {
-    generateMessage(OP_GET_ATTRIBUTE, buffSrc, buffRes);
-
+void generateGetAttributeMessage(int id, ATTRIBUTES type, Buffer&buffSrc, Buffer &buffRes) {
+    generateWithDesctiptor(type, id,OP_GET_ATTRIBUTE, buffSrc, buffRes);
 }
 
-void generateCreateObjMessage(Buffer&buffSrc, Buffer &buffRes) {
-    generateMessage(OP_CREATE_OBJ, buffSrc, buffRes);
+void generateCreateObjMessage(DATA_TYPES type,  Buffer&buffSrc, Buffer &buffRes) {
+
+    if(buffSrc.length > 0){
+        memcpy(buffSrc.data + 1, buffSrc.data, buffSrc.length);
+    }
+    buffSrc.data[0] = type;
+    buffSrc.length+=1;
+    generateMessage( OP_CREATE_OBJ, buffSrc, buffRes);
 }
 
 void generateResponse(Buffer&buffSrc, Buffer &buffRes) {
@@ -70,11 +90,7 @@ void generateOKResponse(Buffer&buffSrc, Buffer &buffRes) {
 void generateErrorResponse(Buffer &buffRes) {
     Buffer buffSrc;
     buffSrc.data[0] = ERROR_RESPONSE;
-    buffSrc.data[1] = ERROR_RESPONSE;
-    buffSrc.data[2] = ERROR_RESPONSE;
-    buffSrc.data[3] = ERROR_RESPONSE;
-    buffSrc.data[4] = ERROR_RESPONSE;
-    buffSrc.length+=5;
+    buffSrc.length=1;
     generateMessage(OP_RESPONSE,  buffSrc,  buffRes);
 
 

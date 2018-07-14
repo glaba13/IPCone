@@ -3,12 +3,28 @@
 //
 
 #include "Sender.h"
+#include <sstream>
+#include <iomanip>
+#include <iostream>
 
+std::string hexStr(BYTE *data, int len)
+{
+    std::stringstream ss;
+    ss<<std::hex;
+    for(int i(0);i<len;++i) {
+        ss << "0x";
+        ss << (int) data[i];
+        ss << " ";
+    }
+
+    return ss.str();
+}
 
 bool sendData(HANDLE hPipe, Buffer buff, string msg) {
     DWORD  cbRead, cbToWrite, cbWritten, dwMode;
     cbToWrite = buff.length;
-    _tprintf( TEXT("Sending %d byte message: \"%s\"\n"), cbToWrite, msg);
+
+    cout<<msg<<endl<<":"<<"Sending "<< buff.length<<" byte message: "<< hexStr((BYTE *)(buff.data), buff.length) <<endl;
 
     BOOL fSuccess = WriteFile(
             hPipe,                  // pipe handle

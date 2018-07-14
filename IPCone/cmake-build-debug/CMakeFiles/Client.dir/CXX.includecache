@@ -103,6 +103,8 @@ protocol.h
 E:/first/IPCone/protocol.h
 
 E:/first/IPCone/OperatorResolver.cpp
+iostream
+-
 OperatorResolver.h
 E:/first/IPCone/OperatorResolver.h
 ObjectPool.h
@@ -157,6 +159,12 @@ E:/first/IPCone/ResponceHandler.h
 E:/first/IPCone/Sender.cpp
 Sender.h
 E:/first/IPCone/Sender.h
+sstream
+-
+iomanip
+-
+iostream
+-
 
 E:/first/IPCone/Sender.h
 ntdef.h

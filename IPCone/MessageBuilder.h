@@ -11,11 +11,11 @@
 
 
  
-     void generateDataSendMessage(Buffer&buffSrc, Buffer&buffRes);
+     void generateDataSendMessage(DATA_TYPES data, Buffer&buffSrc, Buffer&buffRes);
      void generateCallFunMessage(FUNCTIONS fun, Buffer&buffSrc, Buffer&buffRes);
-     void generateCallMethodMessage(Buffer&buffSrc, Buffer&buffRes);
-     void generateCreateObjMessage(Buffer&buffSrc, Buffer&buffRes);
-     void generateGetAttributeMessage(Buffer&buffSrc, Buffer&buffRes);
+     void generateCallMethodMessage(int id, METHODS type, Buffer&buffSrc, Buffer&buffRes);
+     void generateCreateObjMessage(DATA_TYPES data, Buffer&buffSrc, Buffer&buffRes);
+     void generateGetAttributeMessage(int id, ATTRIBUTES att,  Buffer&buffSrc, Buffer&buffRes);
      void generateResponse(Buffer&buffSrc, Buffer&buffRes);
 void generateErrorResponse(Buffer &buffRes);
 void generateOKResponse(Buffer&buffSrc, Buffer &buffRes);
