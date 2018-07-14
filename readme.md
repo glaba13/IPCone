@@ -34,7 +34,7 @@ It should be noted that both synchronous/asynchronous approaches are possible (c
 In addition, there is no specific serialisation, so with this general solution  it is defined individually for each class.
 
 
-
+### Object Pool are used to handle the registration of the objects (the descriptor is returned from the server)
 
 
 ## 3. Test
