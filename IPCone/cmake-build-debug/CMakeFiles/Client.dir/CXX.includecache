@@ -101,9 +101,15 @@ map
 -
 protocol.h
 E:/first/IPCone/protocol.h
+mutex
+-
 
 E:/first/IPCone/OperatorResolver.cpp
 iostream
+-
+mutex
+-
+iomanip
 -
 OperatorResolver.h
 E:/first/IPCone/OperatorResolver.h
@@ -196,6 +202,10 @@ conio.h
 tchar.h
 -
 string
+-
+zconf.h
+-
+iostream
 -
 Buffer.h
 E:/first/IPCone/Buffer.h

@@ -20,7 +20,7 @@ std::string hexStr(BYTE *data, int len)
     return ss.str();
 }
 
-bool sendData(HANDLE hPipe, Buffer buff, string msg) {
+bool sendData(HANDLE hPipe, Buffer buff, string msg, OVERLAPPED *ov) {
     DWORD  cbRead, cbToWrite, cbWritten, dwMode;
     cbToWrite = buff.length;
 
@@ -31,7 +31,7 @@ bool sendData(HANDLE hPipe, Buffer buff, string msg) {
             buff.data,             // message
             cbToWrite,              // message length
             &cbWritten,             // bytes written
-            NULL);                  // not overlapped
+            ov);                  // not overlapped
 
     if (cbToWrite!=cbWritten || ! fSuccess)
     {
@@ -42,4 +42,10 @@ bool sendData(HANDLE hPipe, Buffer buff, string msg) {
     printf("\nMessage sent to server, receiving reply as follows:\n");
 
     return true;
+}
+
+
+bool sendData(HANDLE hPipe, Buffer buff, string msg) {
+    return sendData(hPipe, buff, msg, NULL);
+
 }

@@ -7,6 +7,7 @@
 
 #include <map>
 #include "protocol.h"
+#include <mutex>
 
 class ObjectPool {
 
@@ -19,6 +20,7 @@ private:
     std::map<int, void *> poolObj;
     std::map<int, DATA_TYPES> poolType;
     int index = 0;
+    std::recursive_mutex m_mutex;
 };
 
 

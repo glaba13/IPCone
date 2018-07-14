@@ -11,5 +11,5 @@ using namespace std;
 #include "Buffer.h"
 
 bool sendData(HANDLE hPipe, Buffer buff, string msg);
-
+bool sendData(HANDLE hPipe, Buffer buff, string msg, OVERLAPPED * ov);
 #endif //SERVER_SENDER_H

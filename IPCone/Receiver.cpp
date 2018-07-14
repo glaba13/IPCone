@@ -30,7 +30,7 @@ bool handleOP(char op, Message &request);
 
 bool handleBuffNum(char *data, DWORD *num);
 
-BOOL receive(HANDLE hPipe, int num, Buffer & buffer ) {
+BOOL receive(HANDLE hPipe, int num, Buffer & buffer, OVERLAPPED *ov ) {
     buffer.length = 0;
     BOOL fSuccess = FALSE;
     if(num < 0){
@@ -42,7 +42,12 @@ BOOL receive(HANDLE hPipe, int num, Buffer & buffer ) {
             buffer.data,    // buffer to receive data
             num, // size of buffer
             &buffer.length, // number of bytes read
-            NULL);        // not overlapped I/O
+            ov);        // not overlapped I/O
+
+    if(ov != NULL){
+        fSuccess = GetOverlappedResult(hPipe, ov, &buffer.length, TRUE);
+    }
+
 
     if (!fSuccess || buffer.length != num)
     {
@@ -98,15 +103,14 @@ bool handleBuffNum(char *data, DWORD *num) {
     return TRUE;
 }
 
-////
-///
-BOOL   receiveMessage(HANDLE hPipe, Message &request) {
+
+BOOL   receiveMessage(HANDLE hPipe, Message &request, OVERLAPPED *ov) {
     Buffer buffer;
     int numToRead = 1;
     BOOL fSuccess = FALSE;
     STATE_RECEIVER state = STATE_RECEIVER_START;
     while(1) {
-        fSuccess = receive(hPipe, numToRead, buffer);
+        fSuccess = receive(hPipe, numToRead, buffer, ov);
         if(!fSuccess){
 
             return FALSE;
@@ -151,10 +155,17 @@ BOOL   receiveMessage(HANDLE hPipe, Message &request) {
                     return FALSE;
                 }
 
-               return true;
+                return true;
         }
 
     }
+}
 
-
+////
+///
+/// \param hPipe
+/// \param request
+/// \return
+BOOL   receiveMessage(HANDLE hPipe, Message &request) {
+    return receiveMessage(hPipe,request, NULL);
 }

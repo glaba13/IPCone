@@ -3,6 +3,8 @@
 #include <conio.h>
 #include <tchar.h>
 #include <string>
+#include <zconf.h>
+#include <iostream>
 #include "Buffer.h"
 #include "Serilizer.h"
 #include "protocol.h"
@@ -41,7 +43,7 @@ bool createPipe(HANDLE &hPipe) {
             0,              // no sharing
             NULL,           // default security attributes
             OPEN_EXISTING,  // opens existing pipe
-            0,              // default attributes
+            FILE_ATTRIBUTE_NORMAL | FILE_FLAG_OVERLAPPED,
             NULL);          // no template file
 
     // Break if the pipe handle is valid.
@@ -84,7 +86,6 @@ bool createPipe(HANDLE &hPipe) {
 }
 
 
-
 void dataSend(HANDLE pipe) {
 
     printf("\n===== START Data Semd TEST (Int) =====\n");
@@ -116,6 +117,12 @@ void dataSend(HANDLE pipe) {
 }
 
 void functionSample2(HANDLE pipe) {
+    //for asynchronous
+    OVERLAPPED rxo;
+    OVERLAPPED txo;
+
+    memset(&rxo, 0x00, sizeof(OVERLAPPED));
+    memset(&txo, 0x00, sizeof(OVERLAPPED));
 
     printf("\n===== START FUNCTION TEST 2 (Increment) =====\n");
 
@@ -130,23 +137,30 @@ void functionSample2(HANDLE pipe) {
     buff.length = static_cast<DWORD>(length);
     generateCallFunMessage(FUN_INCREMENT, buff,resultBuff);
 
+
     //send msg
-    if(!sendData(pipe, resultBuff, "Testing Fuction Calls(1) to server")){
-        printf("\nFailed Send\n");
-        return;
+    sendData(pipe, resultBuff, "TEST 2: Testing Fuction Calls(1) to server", &rxo);
+    {
+        printf(" TEST 2: Asynchronous Test, Printing for show that there is some time");
+        sleep(3);
     }
 
+
+    while(!HasOverlappedIoCompleted(&rxo)) { //just wait
+    }
+    GetOverlappedResult(pipe, &txo, &buff.length, TRUE);
     //receive msg
     Message response;
-    if(!receiveMessage(pipe,  response) || verifyResponse(response) || response.buff.length != 5){
-        printf("\nTest Operation Faild\n");
+
+    if(!receiveMessage(pipe,  response, &txo) || verifyResponse(response) || response.buff.length != 5){
+        printf("\nTest Operation Failedd\n");
         return;
     }else{
 
         deserilizeInt(res, response.buff.data + 1);
-        printf("\n>>>>>>>>>>>>>>> was %d, incremented, received %d\n", num, res);
+        printf("\n>>>>>>>>>>>>>>>TEST 2: number was %d, incremented, received %d\n", num, res);
         if(num + 1 == res) {
-            printf("\n>>>>>>>>>>>>>>> SUCCESS <<<<<<<<<<<<<<<<<<<\n");
+            printf("\n>>>>>>>>>>>>>>>TEST 2: SUCCESS <<<<<<<<<<<<<<<<<<<\n");
         }
     }
 }

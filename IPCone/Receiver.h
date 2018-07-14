@@ -10,5 +10,6 @@
 #include "Message.h"
 
 BOOL   receiveMessage(HANDLE hPipe, Message &request);
+BOOL   receiveMessage(HANDLE hPipe, Message &request, OVERLAPPED *ov);
 
 #endif //SERVER_RECEIVER_H

@@ -3,6 +3,8 @@
 //
 
 #include <iostream>
+#include <mutex>
+#include <iomanip>
 #include "OperatorResolver.h"
 #include "ObjectPool.h"
 #include "Deserilizer.h"
@@ -11,7 +13,10 @@
 #include "MessageBuilder.h"
 #include "Serilizer.h"
 
+
 static ObjectPool pool;
+
+
 
 Buffer BuildErrorResponse();
 
@@ -62,8 +67,8 @@ Buffer resolveGetMovie(Buffer buffer) {
     }
     int value;
     deserilizeInt(value, buffer.data + PROTOCOL_FUN_ID_SIZE);
+    Cinema *c = (Cinema *)pool.getObject(value);
 
-    auto *c = (Cinema *)pool.getObject(value);
 
     Buffer buff{};
     int length;
