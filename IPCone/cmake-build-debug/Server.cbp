@@ -122,12 +122,36 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="E:/first/IPCone/Buffer.cpp">
+			<Option target="Client"/>
+		</Unit>
+		<Unit filename="E:/first/IPCone/Buffer.h">
+			<Option target="Client"/>
+		</Unit>
+		<Unit filename="E:/first/IPCone/Deserilizer.cpp">
+			<Option target="Client"/>
+		</Unit>
+		<Unit filename="E:/first/IPCone/Deserilizer.h">
+			<Option target="Client"/>
+		</Unit>
 		<Unit filename="E:/first/IPCone/MessageBuilder.cpp">
 			<Option target="Server"/>
 			<Option target="Client"/>
 		</Unit>
 		<Unit filename="E:/first/IPCone/MessageBuilder.h">
 			<Option target="Server"/>
+			<Option target="Client"/>
+		</Unit>
+		<Unit filename="E:/first/IPCone/Receiver.cpp">
+			<Option target="Client"/>
+		</Unit>
+		<Unit filename="E:/first/IPCone/Receiver.h">
+			<Option target="Client"/>
+		</Unit>
+		<Unit filename="E:/first/IPCone/Request.cpp">
+			<Option target="Client"/>
+		</Unit>
+		<Unit filename="E:/first/IPCone/Request.h">
 			<Option target="Client"/>
 		</Unit>
 		<Unit filename="E:/first/IPCone/Serilizer.cpp">

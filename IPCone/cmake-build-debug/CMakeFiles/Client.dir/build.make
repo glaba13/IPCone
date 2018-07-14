@@ -80,9 +80,105 @@ CMakeFiles/Client.dir/client.cpp.obj.provides: CMakeFiles/Client.dir/client.cpp.
 CMakeFiles/Client.dir/client.cpp.obj.provides.build: CMakeFiles/Client.dir/client.cpp.obj
 
 
+CMakeFiles/Client.dir/Receiver.cpp.obj: CMakeFiles/Client.dir/flags.make
+CMakeFiles/Client.dir/Receiver.cpp.obj: ../Receiver.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\first\IPCone\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Client.dir/Receiver.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Client.dir\Receiver.cpp.obj -c E:\first\IPCone\Receiver.cpp
+
+CMakeFiles/Client.dir/Receiver.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Client.dir/Receiver.cpp.i"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\first\IPCone\Receiver.cpp > CMakeFiles\Client.dir\Receiver.cpp.i
+
+CMakeFiles/Client.dir/Receiver.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Client.dir/Receiver.cpp.s"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\first\IPCone\Receiver.cpp -o CMakeFiles\Client.dir\Receiver.cpp.s
+
+CMakeFiles/Client.dir/Receiver.cpp.obj.requires:
+
+.PHONY : CMakeFiles/Client.dir/Receiver.cpp.obj.requires
+
+CMakeFiles/Client.dir/Receiver.cpp.obj.provides: CMakeFiles/Client.dir/Receiver.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\Client.dir\build.make CMakeFiles/Client.dir/Receiver.cpp.obj.provides.build
+.PHONY : CMakeFiles/Client.dir/Receiver.cpp.obj.provides
+
+CMakeFiles/Client.dir/Receiver.cpp.obj.provides.build: CMakeFiles/Client.dir/Receiver.cpp.obj
+
+
+CMakeFiles/Client.dir/Request.cpp.obj: CMakeFiles/Client.dir/flags.make
+CMakeFiles/Client.dir/Request.cpp.obj: ../Request.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\first\IPCone\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Client.dir/Request.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Client.dir\Request.cpp.obj -c E:\first\IPCone\Request.cpp
+
+CMakeFiles/Client.dir/Request.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Client.dir/Request.cpp.i"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\first\IPCone\Request.cpp > CMakeFiles\Client.dir\Request.cpp.i
+
+CMakeFiles/Client.dir/Request.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Client.dir/Request.cpp.s"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\first\IPCone\Request.cpp -o CMakeFiles\Client.dir\Request.cpp.s
+
+CMakeFiles/Client.dir/Request.cpp.obj.requires:
+
+.PHONY : CMakeFiles/Client.dir/Request.cpp.obj.requires
+
+CMakeFiles/Client.dir/Request.cpp.obj.provides: CMakeFiles/Client.dir/Request.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\Client.dir\build.make CMakeFiles/Client.dir/Request.cpp.obj.provides.build
+.PHONY : CMakeFiles/Client.dir/Request.cpp.obj.provides
+
+CMakeFiles/Client.dir/Request.cpp.obj.provides.build: CMakeFiles/Client.dir/Request.cpp.obj
+
+
+CMakeFiles/Client.dir/Buffer.cpp.obj: CMakeFiles/Client.dir/flags.make
+CMakeFiles/Client.dir/Buffer.cpp.obj: ../Buffer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\first\IPCone\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Client.dir/Buffer.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Client.dir\Buffer.cpp.obj -c E:\first\IPCone\Buffer.cpp
+
+CMakeFiles/Client.dir/Buffer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Client.dir/Buffer.cpp.i"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\first\IPCone\Buffer.cpp > CMakeFiles\Client.dir\Buffer.cpp.i
+
+CMakeFiles/Client.dir/Buffer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Client.dir/Buffer.cpp.s"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\first\IPCone\Buffer.cpp -o CMakeFiles\Client.dir\Buffer.cpp.s
+
+CMakeFiles/Client.dir/Buffer.cpp.obj.requires:
+
+.PHONY : CMakeFiles/Client.dir/Buffer.cpp.obj.requires
+
+CMakeFiles/Client.dir/Buffer.cpp.obj.provides: CMakeFiles/Client.dir/Buffer.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\Client.dir\build.make CMakeFiles/Client.dir/Buffer.cpp.obj.provides.build
+.PHONY : CMakeFiles/Client.dir/Buffer.cpp.obj.provides
+
+CMakeFiles/Client.dir/Buffer.cpp.obj.provides.build: CMakeFiles/Client.dir/Buffer.cpp.obj
+
+
+CMakeFiles/Client.dir/Deserilizer.cpp.obj: CMakeFiles/Client.dir/flags.make
+CMakeFiles/Client.dir/Deserilizer.cpp.obj: ../Deserilizer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\first\IPCone\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/Client.dir/Deserilizer.cpp.obj"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Client.dir\Deserilizer.cpp.obj -c E:\first\IPCone\Deserilizer.cpp
+
+CMakeFiles/Client.dir/Deserilizer.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Client.dir/Deserilizer.cpp.i"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\first\IPCone\Deserilizer.cpp > CMakeFiles\Client.dir\Deserilizer.cpp.i
+
+CMakeFiles/Client.dir/Deserilizer.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Client.dir/Deserilizer.cpp.s"
+	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\first\IPCone\Deserilizer.cpp -o CMakeFiles\Client.dir\Deserilizer.cpp.s
+
+CMakeFiles/Client.dir/Deserilizer.cpp.obj.requires:
+
+.PHONY : CMakeFiles/Client.dir/Deserilizer.cpp.obj.requires
+
+CMakeFiles/Client.dir/Deserilizer.cpp.obj.provides: CMakeFiles/Client.dir/Deserilizer.cpp.obj.requires
+	$(MAKE) -f CMakeFiles\Client.dir\build.make CMakeFiles/Client.dir/Deserilizer.cpp.obj.provides.build
+.PHONY : CMakeFiles/Client.dir/Deserilizer.cpp.obj.provides
+
+CMakeFiles/Client.dir/Deserilizer.cpp.obj.provides.build: CMakeFiles/Client.dir/Deserilizer.cpp.obj
+
+
 CMakeFiles/Client.dir/MessageBuilder.cpp.obj: CMakeFiles/Client.dir/flags.make
 CMakeFiles/Client.dir/MessageBuilder.cpp.obj: ../MessageBuilder.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\first\IPCone\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Client.dir/MessageBuilder.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\first\IPCone\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/Client.dir/MessageBuilder.cpp.obj"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Client.dir\MessageBuilder.cpp.obj -c E:\first\IPCone\MessageBuilder.cpp
 
 CMakeFiles/Client.dir/MessageBuilder.cpp.i: cmake_force
@@ -106,7 +202,7 @@ CMakeFiles/Client.dir/MessageBuilder.cpp.obj.provides.build: CMakeFiles/Client.d
 
 CMakeFiles/Client.dir/Serilizer.cpp.obj: CMakeFiles/Client.dir/flags.make
 CMakeFiles/Client.dir/Serilizer.cpp.obj: ../Serilizer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\first\IPCone\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Client.dir/Serilizer.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=E:\first\IPCone\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/Client.dir/Serilizer.cpp.obj"
 	C:\PROGRA~2\MINGW-~1\I686-8~1.0-P\mingw32\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\Client.dir\Serilizer.cpp.obj -c E:\first\IPCone\Serilizer.cpp
 
 CMakeFiles/Client.dir/Serilizer.cpp.i: cmake_force
@@ -131,6 +227,10 @@ CMakeFiles/Client.dir/Serilizer.cpp.obj.provides.build: CMakeFiles/Client.dir/Se
 # Object files for target Client
 Client_OBJECTS = \
 "CMakeFiles/Client.dir/client.cpp.obj" \
+"CMakeFiles/Client.dir/Receiver.cpp.obj" \
+"CMakeFiles/Client.dir/Request.cpp.obj" \
+"CMakeFiles/Client.dir/Buffer.cpp.obj" \
+"CMakeFiles/Client.dir/Deserilizer.cpp.obj" \
 "CMakeFiles/Client.dir/MessageBuilder.cpp.obj" \
 "CMakeFiles/Client.dir/Serilizer.cpp.obj"
 
@@ -138,13 +238,17 @@ Client_OBJECTS = \
 Client_EXTERNAL_OBJECTS =
 
 Client.exe: CMakeFiles/Client.dir/client.cpp.obj
+Client.exe: CMakeFiles/Client.dir/Receiver.cpp.obj
+Client.exe: CMakeFiles/Client.dir/Request.cpp.obj
+Client.exe: CMakeFiles/Client.dir/Buffer.cpp.obj
+Client.exe: CMakeFiles/Client.dir/Deserilizer.cpp.obj
 Client.exe: CMakeFiles/Client.dir/MessageBuilder.cpp.obj
 Client.exe: CMakeFiles/Client.dir/Serilizer.cpp.obj
 Client.exe: CMakeFiles/Client.dir/build.make
 Client.exe: CMakeFiles/Client.dir/linklibs.rsp
 Client.exe: CMakeFiles/Client.dir/objects1.rsp
 Client.exe: CMakeFiles/Client.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=E:\first\IPCone\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable Client.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=E:\first\IPCone\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable Client.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Client.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -153,6 +257,10 @@ CMakeFiles/Client.dir/build: Client.exe
 .PHONY : CMakeFiles/Client.dir/build
 
 CMakeFiles/Client.dir/requires: CMakeFiles/Client.dir/client.cpp.obj.requires
+CMakeFiles/Client.dir/requires: CMakeFiles/Client.dir/Receiver.cpp.obj.requires
+CMakeFiles/Client.dir/requires: CMakeFiles/Client.dir/Request.cpp.obj.requires
+CMakeFiles/Client.dir/requires: CMakeFiles/Client.dir/Buffer.cpp.obj.requires
+CMakeFiles/Client.dir/requires: CMakeFiles/Client.dir/Deserilizer.cpp.obj.requires
 CMakeFiles/Client.dir/requires: CMakeFiles/Client.dir/MessageBuilder.cpp.obj.requires
 CMakeFiles/Client.dir/requires: CMakeFiles/Client.dir/Serilizer.cpp.obj.requires
 

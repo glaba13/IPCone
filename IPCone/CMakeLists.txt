@@ -10,5 +10,5 @@ set(SERVER_SOURCE_FILES server.cpp)
 add_executable(Server ${SERVER_SOURCE_FILES} ${SHARED_SOURCE_FILES})
 
 
-set(CLIENT_SOURCE_FILES client.cpp)
+set(CLIENT_SOURCE_FILES client.cpp Receiver.cpp Receiver.h Request.cpp Request.h Buffer.cpp Buffer.h Deserilizer.cpp Deserilizer.h)
 add_executable(Client ${CLIENT_SOURCE_FILES} ${SHARED_SOURCE_FILES})
