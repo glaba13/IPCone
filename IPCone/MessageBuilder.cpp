@@ -5,45 +5,68 @@
 #include <wchar.h>
 #include "MessageBuilder.h"
 #include "protocol.h"
+#include "Buffer.h"
 
-void generateMessage(OPERATIONS op, char *buff, int length, void*buffRes) {
+void generateMessage(OPERATIONS op, Buffer&buff,  Buffer &buffRes) {
     int i = 0;
-    char* buffResChar = (char *)buffRes;
+    char* buffResChar = (char *)buffRes.data;
     buffResChar[i++] = (char)SYNCH_START;
+    buffResChar[i++] = (char)op;
 
-    buffResChar[i++] = (char) (length >> 24);
-    buffResChar[i++] = (char) (length >> 16);
-    buffResChar[i++] = (char) (length >> 8);
-    buffResChar[i++] = (char) length;
+    buffResChar[i++] = (char) (buff.length >> 24);
+    buffResChar[i++] = (char) (buff.length >> 16);
+    buffResChar[i++] = (char) (buff.length >> 8);
+    buffResChar[i++] = (char) buff.length;
 
-    if(length > 0){
-        memcpy(buffResChar + i, buff, length);
+    if(buff.length > 0){
+        memcpy(buffResChar + i, buff.data, buff.length);
     }
     buffResChar[i] = (char)SYNCH_END;
 }
 
-void MessageBuilder::generateDataSendMessage(void *buff, int length, void*buffRes) {
-    generateMessage(OP_DATA, (char *)buff, length, buffRes);
+void generateDataSendMessage(Buffer&buffSrc, Buffer &buffRes) {
+    generateMessage(OP_DATA, buffSrc, buffRes);
 }
 
-void MessageBuilder::generateCallFunMessage(void *buff, int length, void*buffRes) {
-    generateMessage(OP_FUNCTION, (char *)buff, length, buffRes);
-
-}
-
-void MessageBuilder::generateCallMethodMessage(void *buff, int length, void*buffRes) {
-    generateMessage(OP_METHOD, (char *)buff, length, buffRes);
-}
-
-void MessageBuilder::generateGetAttributeMessage(void *buff, int length, void*buffRes) {
-    generateMessage(OP_GET_ATTRIBUTE, (char *)buff, length, buffRes);
+void generateCallFunMessage(Buffer&buffSrc, Buffer &buffRes) {
+    generateMessage(OP_FUNCTION, buffSrc, buffRes);
 
 }
 
-void MessageBuilder::generateCreateObjMessage(void *buff, int length, void*buffRes) {
-    generateMessage(OP_CREATE_OBJ, (char *)buff, length, buffRes);
+void generateCallMethodMessage(Buffer&buffSrc, Buffer &buffRes) {
+    generateMessage(OP_METHOD, buffSrc, buffRes);
 }
 
-void MessageBuilder::generateResponse(void *buff, int length, void *buffRes) {
-    generateMessage(OP_RESPONSE, (char *)buff, length, buffRes);
+void generateGetAttributeMessage(Buffer&buffSrc, Buffer &buffRes) {
+    generateMessage(OP_GET_ATTRIBUTE, buffSrc, buffRes);
+
 }
+
+void generateCreateObjMessage(Buffer&buffSrc, Buffer &buffRes) {
+    generateMessage(OP_CREATE_OBJ, buffSrc, buffRes);
+}
+
+void generateResponse(Buffer&buffSrc, Buffer &buffRes) {
+    generateMessage(OP_RESPONSE, buffSrc,  buffRes);
+}
+
+
+void generateOKResponse(Buffer&buffSrc, Buffer &buffRes) {
+
+    memmove(buffSrc.data + 1, buffSrc.data, buffSrc.length);
+    buffSrc.data[0] = OK_RESPONSE;
+    buffSrc.length+=1;
+    generateMessage(OP_RESPONSE,  buffSrc,  buffRes);
+}
+
+void generateErrorResponse(Buffer &buffRes) {
+    Buffer buffSrc;
+    buffSrc.data[0] = ERROR_RESPONSE;
+    buffSrc.data[1] = ERROR_RESPONSE;
+    buffSrc.data[2] = ERROR_RESPONSE;
+    buffSrc.data[3] = ERROR_RESPONSE;
+    buffSrc.data[4] = ERROR_RESPONSE;
+    buffSrc.length+=5;
+    generateMessage(OP_RESPONSE,  buffSrc,  buffRes);
+}
+

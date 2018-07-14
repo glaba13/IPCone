@@ -24,7 +24,7 @@ enum STATE_RECEIVER{
 };
 
 
-bool handeStart(char start);
+bool handleStart(char start);
 
 bool handleOP(char op, Request &request);
 
@@ -32,6 +32,9 @@ bool handleBuffNum(char *data, DWORD *num);
 
 BOOL receive(HANDLE hPipe, int num, Buffer & buffer ) {
     BOOL fSuccess = FALSE;
+    if(num < 0){
+        return TRUE;
+    }
 
     fSuccess = ReadFile(
             hPipe,        // handle to pipe
@@ -66,7 +69,6 @@ bool handleOP(char op, Request &request) {
         case OP_METHOD:
         case OP_CREATE_OBJ:
         case OP_GET_ATTRIBUTE:
-        case OP_RESPONSE:
             request.op = (OPERATIONS)op;
             return true;
     }
@@ -105,7 +107,7 @@ BOOL   receiveRequest( HANDLE hPipe, Request &request) {
         switch(state) {
 
             case STATE_RECEIVER_START:
-                if(handeStart(buffer.data[0])) {
+                if(handleStart(buffer.data[0])) {
                     state = STATE_RECEIVER_OP;
                 }
                 break;

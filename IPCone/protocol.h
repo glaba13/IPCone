@@ -14,14 +14,34 @@ enum OPERATIONS {
 };
 
 
+enum ATTRIBUTES {
+    ATT_CINAMA_NAME = 0x00010001, // classNum + attNum
+    ATT_CINAMA_RATING = 0x00010002, // classNum + attNum
+    ATT_MOVIE_CINEMA = 0x00020001, // classNum + attNum
+};
+
+enum ERROR_TYPES {
+    GENERIC_ERROR,
+    UNSUPPORTED_OPERATION,
+};
+
+
 #define SYNCH_START   (0xEF)
 #define SYNCH_END  (0xFC)
 #define PROTOCOL_NUMBER_SIZE  (4)
+#define PROTOCOL_OBJ_ID_SIZE  (4)
+#define PROTOCOL_FUN_ID_SIZE  (4)
+#define PROTOCOL_METH_ID_SIZE  (4)
+#define PROTOCOL_ATTR_ID_SIZE  (4)
 
 enum FUNCTIONS {
     FUN_INCREMENT = 0x01,
-    FUN_GET_TEXT = 0x02,
+    FUN_PRINT_TEXT = 0x02,
 
+};
+
+enum METHODS {
+    METHOD_CINEMA_GET_MOVIE = 0x00010001, // classNum + MethodNum
 };
 
 enum DATA_TYPES {

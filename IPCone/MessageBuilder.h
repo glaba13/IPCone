@@ -6,18 +6,19 @@
 #define CLIENT_MESSAGEBUILDER_H
 
 
+#include "Buffer.h"
+
 #define ADDITIONAL_LENGTH_OF_REQUEST  (7)
 
- class MessageBuilder {
-
-
-    static void generateDataSendMessage(void* buff, int length, void*buffRes);
-    static void generateCallFunMessage(void* buff, int length, void*buffRes);
-    static void generateCallMethodMessage(void* buff, int length, void*buffRes);
-    static void generateCreateObjMessage(void* buff, int length, void*buffRes);
-    static void generateGetAttributeMessage(void* buff, int length, void*buffRes);
-    static void generateResponse(void* buff, int length, void*buffRes);
-};
+ 
+    static void generateDataSendMessage(Buffer&buffSrc, Buffer&buffRes);
+    static void generateCallFunMessage(Buffer&buffSrc, Buffer&buffRes);
+    static void generateCallMethodMessage(Buffer&buffSrc, Buffer&buffRes);
+    static void generateCreateObjMessage(Buffer&buffSrc, Buffer&buffRes);
+    static void generateGetAttributeMessage(Buffer&buffSrc, Buffer&buffRes);
+    static void generateResponse(Buffer&buffSrc, Buffer&buffRes);
+void generateErrorResponse(Buffer &buffRes);
+void generateOKResponse(Buffer&buffSrc, Buffer &buffRes);
 
 
 #endif //CLIENT_MESSAGEBUILDER_H
