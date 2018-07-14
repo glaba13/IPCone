@@ -4,7 +4,7 @@
 
 #include "Receiver.h"
 #include "Buffer.h"
-#include "Request.h"
+#include "Message.h"
 #include "Deserilizer.h"
 
 #include <windows.h>
@@ -24,13 +24,14 @@ enum STATE_RECEIVER{
 };
 
 
-bool handleStart(char start);
+bool handleStart(unsigned char start);
 
-bool handleOP(char op, Request &request);
+bool handleOP(char op, Message &request);
 
 bool handleBuffNum(char *data, DWORD *num);
 
 BOOL receive(HANDLE hPipe, int num, Buffer & buffer ) {
+    buffer.length = 0;
     BOOL fSuccess = FALSE;
     if(num < 0){
         return TRUE;
@@ -39,13 +40,18 @@ BOOL receive(HANDLE hPipe, int num, Buffer & buffer ) {
     fSuccess = ReadFile(
             hPipe,        // handle to pipe
             buffer.data,    // buffer to receive data
-            BUFSIZE*sizeof(TCHAR), // size of buffer
+            num, // size of buffer
             &buffer.length, // number of bytes read
             NULL);        // not overlapped I/O
 
     if (!fSuccess || buffer.length != num)
     {
-        if (GetLastError() == ERROR_BROKEN_PIPE)
+
+        int err = GetLastError();
+        if(err == ERROR_MORE_DATA) {
+            return TRUE;
+        }
+        if (err == ERROR_BROKEN_PIPE)
         {
             _tprintf(TEXT("InstanceThread: client disconnected.\n"), GetLastError());
         }
@@ -60,7 +66,7 @@ BOOL receive(HANDLE hPipe, int num, Buffer & buffer ) {
 }
 
 
-bool handleOP(char op, Request &request) {
+bool handleOP(char op, Message &request) {
 
     switch(op) {
         default:return false;
@@ -69,15 +75,16 @@ bool handleOP(char op, Request &request) {
         case OP_METHOD:
         case OP_CREATE_OBJ:
         case OP_GET_ATTRIBUTE:
+        case OP_RESPONSE:
             request.op = (OPERATIONS)op;
             return true;
     }
 }
 
-bool handleStart(char start) {
+bool handleStart(unsigned char start) {
     return start == SYNCH_START;
 }
-bool handleEnd(char start) {
+bool handleEnd(unsigned char start) {
     return start == SYNCH_END;
 }
 
@@ -86,14 +93,14 @@ bool handleEnd(char start) {
 
 bool handleBuffNum(char *data, DWORD *num) {
     int numInt = 0;
-    deserilize(numInt, data);
+    deserilizeInt(numInt, data);
     *num = static_cast<DWORD>(numInt);
     return TRUE;
 }
 
 ////
 ///
-BOOL   receiveRequest( HANDLE hPipe, Request &request) {
+BOOL   receiveMessage(HANDLE hPipe, Message &request) {
     Buffer buffer;
     int numToRead = 1;
     BOOL fSuccess = FALSE;
@@ -109,8 +116,11 @@ BOOL   receiveRequest( HANDLE hPipe, Request &request) {
             case STATE_RECEIVER_START:
                 if(handleStart(buffer.data[0])) {
                     state = STATE_RECEIVER_OP;
+                }else{
+                    return false;
                 }
                 break;
+
             case STATE_RECEIVER_OP:
                 fSuccess = handleOP(buffer.data[0], request);
                 if(!fSuccess){
@@ -127,11 +137,12 @@ BOOL   receiveRequest( HANDLE hPipe, Request &request) {
                     return FALSE;
                 }
                 state = STATE_RECEIVER_BUFF_DATA;
-                numToRead = STATE_RECEIVER_BUFF_DATA;
+                numToRead = request.buff.length;
                 break;
             case STATE_RECEIVER_BUFF_DATA:
                 memcpy(request.buff.data, buffer.data, request.buff.length);
                 state = STATE_RECEIVER_END;
+                numToRead = 1;
                 break;
             case STATE_RECEIVER_END:
                 fSuccess = handleEnd(buffer.data[0]);

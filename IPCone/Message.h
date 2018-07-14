@@ -9,7 +9,7 @@
 #include "protocol.h"
 #include "Buffer.h"
 
-struct Request {
+struct Message {
 
     OPERATIONS op;
     Buffer buff;

@@ -15,9 +15,8 @@ void deserilizeInt(int &value, char *buffer) {
                  (unsigned char)(buffer[3]));
 }
 
-void deserilizeStr(string &value, char * buffer){
-    string obj = (buffer);
-    value = obj;
+string deserilizeStr( char * buffer){
+   return string(buffer);
 }
 
 void deserilizeMovie(Movie *m, char * buffer){

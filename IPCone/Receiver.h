@@ -6,9 +6,9 @@
 #define SERVER_RECEIVER_H
 
 
-class Receiver {
+#include <fibersapi.h>
+#include "Message.h"
 
-};
-
+BOOL   receiveMessage(HANDLE hPipe, Message &request);
 
 #endif //SERVER_RECEIVER_H

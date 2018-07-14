@@ -15,7 +15,7 @@ using namespace std;
 void deserilizeInt(int &value, char * buffer);
 
 
-void deserilizeStr(string &value, char * buffer);
+string deserilizeStr(char * buffer);
 
 void deserilizeShort(short &value, char *buffer);
 

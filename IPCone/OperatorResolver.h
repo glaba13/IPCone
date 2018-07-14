@@ -7,8 +7,8 @@
 
 
 #include "Buffer.h"
-#include "Request.h"
+#include "Message.h"
 
-Buffer resolveOperator(Request req);
+Buffer resolveOperator(Message req);
 
 #endif //SERVER_OPERATORRESOLVER_H

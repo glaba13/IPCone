@@ -6,6 +6,7 @@
 #include "MessageBuilder.h"
 #include "protocol.h"
 #include "Buffer.h"
+#include "Serilizer.h"
 
 void generateMessage(OPERATIONS op, Buffer&buff,  Buffer &buffRes) {
     int i = 0;
@@ -21,17 +22,24 @@ void generateMessage(OPERATIONS op, Buffer&buff,  Buffer &buffRes) {
     if(buff.length > 0){
         memcpy(buffResChar + i, buff.data, buff.length);
     }
-    buffResChar[i] = (char)SYNCH_END;
+    buffResChar[buff.length + i] = (char)SYNCH_END;
+    buffRes.length = buff.length + 7;
 }
 
 void generateDataSendMessage(Buffer&buffSrc, Buffer &buffRes) {
     generateMessage(OP_DATA, buffSrc, buffRes);
 }
 
-void generateCallFunMessage(Buffer&buffSrc, Buffer &buffRes) {
+void generateCallFunMessage(FUNCTIONS fun, Buffer&buffSrc, Buffer &buffRes) {
+    memmove(buffSrc.data + 4, buffSrc.data, buffSrc.length);
+    buffSrc.data[0] = fun;
+    int dummy;
+    serilizeInt(fun, buffSrc.data, &dummy);
+    buffSrc.length+=4;
     generateMessage(OP_FUNCTION, buffSrc, buffRes);
-
 }
+
+
 
 void generateCallMethodMessage(Buffer&buffSrc, Buffer &buffRes) {
     generateMessage(OP_METHOD, buffSrc, buffRes);
@@ -55,7 +63,7 @@ void generateOKResponse(Buffer&buffSrc, Buffer &buffRes) {
 
     memmove(buffSrc.data + 1, buffSrc.data, buffSrc.length);
     buffSrc.data[0] = OK_RESPONSE;
-    buffSrc.length+=1;
+    buffSrc.length= buffSrc.length +1;
     generateMessage(OP_RESPONSE,  buffSrc,  buffRes);
 }
 
@@ -68,5 +76,7 @@ void generateErrorResponse(Buffer &buffRes) {
     buffSrc.data[4] = ERROR_RESPONSE;
     buffSrc.length+=5;
     generateMessage(OP_RESPONSE,  buffSrc,  buffRes);
+
+
 }
 

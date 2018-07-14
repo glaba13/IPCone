@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <tchar.h>
 #include <strsafe.h>
+#include "Receiver.h"
+#include "Sender.h"
+#include "OperatorResolver.h"
 
 #define BUFSIZE 512
 
@@ -13,7 +16,7 @@ int _tmain(VOID)
     BOOL   fConnected = FALSE;
     DWORD  dwThreadId = 0;
     HANDLE hPipe = INVALID_HANDLE_VALUE, hThread = NULL;
-    LPTSTR lpszPipename = TEXT("\\\\.\\pipe\\mynamedpipe");
+    LPTSTR lpszPipename = LPTSTR(TEXT("\\\\.\\pipe\\StreamLabsPipe"));
 
 // The main loop creates an instance of the named pipe and 
 // then waits for a client to connect to it. When the client 
@@ -135,24 +138,19 @@ DWORD WINAPI InstanceThread(LPVOID lpvParam)
     {
         // Read client requests from the pipe. This simplistic code only allows messages
         // up to BUFSIZE characters in length.
-
-
-        // Process the incoming message.
-        GetAnswerToRequest(pchRequest, pchReply, &cbReplyBytes);
-
-        // Write the reply to the pipe. 
-        fSuccess = WriteFile(
-                hPipe,        // handle to pipe 
-                pchReply,     // buffer to write from 
-                cbReplyBytes, // number of bytes to write 
-                &cbWritten,   // number of bytes written 
-                NULL);        // not overlapped I/O 
-
-        if (!fSuccess || cbReplyBytes != cbWritten)
-        {
-            _tprintf(TEXT("InstanceThread WriteFile failed, GLE=%d.\n"), GetLastError());
+        Message request;
+        if(!receiveMessage(hPipe, request)){
+            printf("Failed to receive message.\n");
             break;
         }
+        // Process the incoming message.
+        Buffer response = resolveOperator(request);
+
+      if(!sendData(hPipe, response, "Sending Response")) {
+          printf("Failed to send message.\n");
+          break;
+      }
+
     }
 
 // Flush the pipe to allow the client to read the pipe's contents 
@@ -179,7 +177,7 @@ VOID GetAnswerToRequest( LPTSTR pchRequest,
 // of an instance thread. Keep in mind the main thread will continue to wait for
 // and receive other client connections while the instance thread is working.
 {
-    _tprintf( TEXT("Client Request String:\"%s\"\n"), pchRequest );
+    _tprintf( TEXT("Client Message String:\"%s\"\n"), pchRequest );
 
     // Check the outgoing message to make sure it's not too long for the buffer.
     if (FAILED(StringCchCopy( pchReply, BUFSIZE, TEXT("default answer from server") )))

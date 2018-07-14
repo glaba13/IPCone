@@ -7,16 +7,16 @@
 
 
 #include "Buffer.h"
+#include "protocol.h"
 
-#define ADDITIONAL_LENGTH_OF_REQUEST  (7)
 
  
-    static void generateDataSendMessage(Buffer&buffSrc, Buffer&buffRes);
-    static void generateCallFunMessage(Buffer&buffSrc, Buffer&buffRes);
-    static void generateCallMethodMessage(Buffer&buffSrc, Buffer&buffRes);
-    static void generateCreateObjMessage(Buffer&buffSrc, Buffer&buffRes);
-    static void generateGetAttributeMessage(Buffer&buffSrc, Buffer&buffRes);
-    static void generateResponse(Buffer&buffSrc, Buffer&buffRes);
+     void generateDataSendMessage(Buffer&buffSrc, Buffer&buffRes);
+     void generateCallFunMessage(FUNCTIONS fun, Buffer&buffSrc, Buffer&buffRes);
+     void generateCallMethodMessage(Buffer&buffSrc, Buffer&buffRes);
+     void generateCreateObjMessage(Buffer&buffSrc, Buffer&buffRes);
+     void generateGetAttributeMessage(Buffer&buffSrc, Buffer&buffRes);
+     void generateResponse(Buffer&buffSrc, Buffer&buffRes);
 void generateErrorResponse(Buffer &buffRes);
 void generateOKResponse(Buffer&buffSrc, Buffer &buffRes);
 

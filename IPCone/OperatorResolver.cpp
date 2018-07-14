@@ -34,7 +34,7 @@ Buffer resolveCinGetMovie(Buffer buffer);
 
 Buffer intDataResolver(Buffer buffer);
 
-Buffer resolveOperator(Request req) {
+Buffer resolveOperator(Message req) {
     switch(req.op) {
 
         case OP_DATA:
@@ -167,7 +167,7 @@ Buffer resolveCinGetMovie(Buffer buffer) {
 
 
 Buffer resolveFuncOperator(Buffer buffer) {
-    if(buffer.length != PROTOCOL_FUN_ID_SIZE + 1) {
+    if(buffer.length < PROTOCOL_FUN_ID_SIZE + 1) {
         return BuildErrorResponse();
     }
     int num = 0;
@@ -193,30 +193,27 @@ Buffer BuildOKResponse() {
 }
 
 Buffer resolvePrintText(Buffer buffer) {
-    char type = buffer.data[PROTOCOL_FUN_ID_SIZE];
-    if(type != DATA_STRING || buffer.length < PROTOCOL_FUN_ID_SIZE) {
+    if( buffer.length < PROTOCOL_FUN_ID_SIZE) {
         return BuildErrorResponse();
     }
-    string str;
-    deserilizeStr(str, buffer.data + PROTOCOL_FUN_ID_SIZE + 1);
+    string str = deserilizeStr(buffer.data + PROTOCOL_FUN_ID_SIZE );
     printText(str);
 
     return BuildOKResponse();
 }
 
 Buffer resolveFunIncrement(Buffer buffer) {
-    char type = buffer.data[PROTOCOL_FUN_ID_SIZE];
-    if(type != DATA_INT || buffer.length != PROTOCOL_FUN_ID_SIZE + 1 + PROTOCOL_NUMBER_SIZE) {
+    if( buffer.length != PROTOCOL_FUN_ID_SIZE  + PROTOCOL_NUMBER_SIZE) {
         return BuildErrorResponse();
     }
     int value;
-    deserilizeInt(value, buffer.data + PROTOCOL_FUN_ID_SIZE + 1);
+    deserilizeInt(value, buffer.data + PROTOCOL_FUN_ID_SIZE );
     value = incrementInt(value);
 
     Buffer buff;
-    buff.data[0] = DATA_INT;
-    buff.length = 1 + PROTOCOL_NUMBER_SIZE;
-    deserilizeInt(value, buff.data + 1);
+    buff.length = PROTOCOL_NUMBER_SIZE;
+    int length = 0;
+    serilizeInt(value, buff.data, &length );
     Buffer res;
     generateOKResponse(buff, res);
     return res;
