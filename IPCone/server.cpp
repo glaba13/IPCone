@@ -88,7 +88,7 @@ DWORD WINAPI InstanceThread(LPVOID lpvParam)
     TCHAR* pchRequest = (TCHAR*)HeapAlloc(hHeap, 0, BUFSIZE*sizeof(TCHAR));
     TCHAR* pchReply   = (TCHAR*)HeapAlloc(hHeap, 0, BUFSIZE*sizeof(TCHAR));
 
-    DWORD cbBytesRead = 0, cbReplyBytes = 0, cbWritten = 0;
+    DWORD  cbReplyBytes = 0, cbWritten = 0;
     BOOL fSuccess = FALSE;
     HANDLE hPipe  = NULL;
 
@@ -135,25 +135,7 @@ DWORD WINAPI InstanceThread(LPVOID lpvParam)
     {
         // Read client requests from the pipe. This simplistic code only allows messages
         // up to BUFSIZE characters in length.
-        fSuccess = ReadFile(
-                hPipe,        // handle to pipe 
-                pchRequest,    // buffer to receive data 
-                BUFSIZE*sizeof(TCHAR), // size of buffer 
-                &cbBytesRead, // number of bytes read 
-                NULL);        // not overlapped I/O 
 
-        if (!fSuccess || cbBytesRead == 0)
-        {
-            if (GetLastError() == ERROR_BROKEN_PIPE)
-            {
-                _tprintf(TEXT("InstanceThread: client disconnected.\n"), GetLastError());
-            }
-            else
-            {
-                _tprintf(TEXT("InstanceThread ReadFile failed, GLE=%d.\n"), GetLastError());
-            }
-            break;
-        }
 
         // Process the incoming message.
         GetAnswerToRequest(pchRequest, pchReply, &cbReplyBytes);
